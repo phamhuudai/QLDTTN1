@@ -43,6 +43,7 @@ public class ControllerDSGV extends HttpServlet {
 		request.setAttribute("arGV", mGV.getList());
 		RequestDispatcher rd = request.getRequestDispatcher("/Admin_GV.jsp");
 		rd.forward(request, response);
+		/////////test
 	}
 
 }
