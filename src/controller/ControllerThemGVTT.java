@@ -76,39 +76,7 @@ public class ControllerThemGVTT extends HttpServlet {
 			}
 		}
 		
-		/*GiaoVienDAO mGV = new GiaoVienDAO();
-    	ArrayList<GIAOVIEN> arGV = mGV.getList();
-    	boolean check=true;
-    	String ma = request.getParameter("ma");
 		
-		
-		
-		
-		String ten=request.getParameter("ten");
-        byte[] t = ten.getBytes("ISO-8859-1");
-        ten = new String(t, "UTF-8");
-        String dc=request.getParameter("dc");
-        byte[] d = dc.getBytes("ISO-8859-1");
-        dc = new String(d, "UTF-8");
-        
-        
-    	 for (GIAOVIEN gv : arGV) {
-			if(gv.getMagvhd().trim().equals(ma)){
-				check=false; 
-				break;
-			}
-		}
-    	 if(check){
-    		 GIAOVIEN g =new GIAOVIEN(ma, ten, ngaysinh, cn, email, sdt, dc);
-    		 mGV.insertGV(g);
-    		 out.print("<script type='text/javascript'>");
-  			out.print("alert('Đã thêm thành công!'); window.location='danhsachgv'");
-  			out.print("</script>");
-    	 }else{
-    		out.print("<script type='text/javascript'>");
- 			out.print("alert('Mã GV đã tồn tại!'); window.location='Admin_GV_ThemThongThuong.jsp'");
- 			out.print("</script>");
-    	 }*/
 	}
 
 }
