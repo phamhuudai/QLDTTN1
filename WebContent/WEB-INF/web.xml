@@ -132,4 +132,14 @@
     <servlet-name>fhgfghfg</servlet-name>
     <url-pattern>/fhgfghfg</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>test1</display-name>
+    <servlet-name>test1</servlet-name>
+    <servlet-class>controller.test1</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>test1</servlet-name>
+    <url-pattern>/test1</url-pattern>
+  </servlet-mapping>
 </web-app>
