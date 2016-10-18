@@ -1,0 +1,60 @@
+body{
+    margin: 30px auto 0;
+    height: auto;
+}
+body h3{
+	color: blue;	
+	font-weight: bold;
+}
+body b{
+	color: red;
+}
+.header_TB{
+	font-weight: bold;
+}
+/* .header_contentLeft{
+	float: left;
+} */
+.header_contentRight{
+	float: right;
+}
+.well{
+	/* float:left; */
+	
+}
+.navbar{
+	background-color: #061647;
+}
+.content-centre{
+	height: 500px;
+}
+.image-btn{
+	width:25px; 
+	height:25px;
+	padding: 5px;
+	/* //margin-top:-26px;  */
+}
+.pagination{
+	margin-left: 42%;
+}
+#themGV, #nhapFile{
+	margin-left: 86%;
+}
+#GV_Nhapbtn{
+	margin-left: 35%;
+}
+#GV_Huybtn{
+	margin-left: 130px;
+}
+#xuatDt{
+	margin-left: 86%;
+}
+#dsbv{
+	margin-left: 77%;
+}
+#DT_btnTao{
+	margin-left: 25%;
+}
+#DT_btnHuy{
+	margin-left: 10%;
+}
