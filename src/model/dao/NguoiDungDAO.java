@@ -54,13 +54,13 @@ public class NguoiDungDAO {
 		try {
 			pst=conn.prepareStatement(sql);
 			pst.setInt(1, id);
+			pst.executeUpdate();
 			res=true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return res;
-		
+		return res;		
 		
 	}
 }

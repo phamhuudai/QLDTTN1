@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.bo.GiaoVienBO;
+import model.bo.NguoiDungBO;
+import model.bo.ThongBaoBO;
 import model.dao.GiaoVienDAO;
 
 /**
@@ -38,10 +40,20 @@ public class ControllerXoaGV extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int id =Integer.parseInt(request.getParameter("id"));
+		int maGV =Integer.parseInt(request.getParameter("id"));
 		GiaoVienBO gvBO = new GiaoVienBO();
-		if(gvBO.deleteGV(id)){
-			response.sendRedirect(request.getContextPath()+"/danhsachgv?msg=del");
+		ThongBaoBO tbBO = new ThongBaoBO();
+		NguoiDungBO ndBO = new NguoiDungBO();
+		if(tbBO.delData(maGV)){
+			if(gvBO.deleteGV(maGV)){
+				if(ndBO.delData(maGV)){
+					response.sendRedirect(request.getContextPath()+"/danhsachgv?msg=del");
+				}else{
+					response.sendRedirect(request.getContextPath()+"/danhsachgv?msg=error");
+				}
+			}else{
+				response.sendRedirect(request.getContextPath()+"/danhsachgv?msg=error");
+			}
 		}
 		else{
 			response.sendRedirect(request.getContextPath()+"/danhsachgv?msg=error");
