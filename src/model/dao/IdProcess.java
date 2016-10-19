@@ -20,7 +20,7 @@ public class IdProcess {
 		conn = c.getConnectSqlServer();
 		//cat so tu id
 		
-		String sql = "SELECT MAX(cast ("+id+" as int)) as id FROM " +tenBang;
+		String sql = "SELECT MAX("+id+") as id FROM " +tenBang;
 		try {
 			pst =conn.prepareStatement(sql);
 			rs =pst.executeQuery();
@@ -45,9 +45,9 @@ public class IdProcess {
 		
 		return idInt+1;
 	}
-	/*public static void main(String[] agrs){
+	public static void main(String[] agrs){
 		IdProcess idProcess=new IdProcess();
-		int id = idProcess.getID("MaGVHD", "giaovien");
+		int id = idProcess.getID("MaSo", "nguoidung");
 		System.out.println(id);
-	}*/
+	}
 }

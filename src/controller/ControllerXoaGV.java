@@ -38,7 +38,7 @@ public class ControllerXoaGV extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String id = request.getParameter("id");
+		int id =Integer.parseInt(request.getParameter("id"));
 		GiaoVienBO gvBO = new GiaoVienBO();
 		if(gvBO.deleteGV(id)){
 			response.sendRedirect(request.getContextPath()+"/danhsachgv?msg=del");

@@ -20,13 +20,13 @@ public class ThongBaoDAO{
 	public ThongBaoDAO(){
 		c = new ConnectionDB();
 	}
-	public boolean delDataByGV(String maGV){
+	public boolean delData(int maGV){
 		boolean res=false;
 		conn =c.getConnectSqlServer();
 		String sql ="delete from thongbao where MaGVHD =?";
 		try {
 			pst=conn.prepareStatement(sql);
-			pst.setString(1, maGV);
+			pst.setInt(1, maGV);
 			res=true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
