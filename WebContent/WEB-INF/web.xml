@@ -104,16 +104,6 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>AdminGVThemtufile</display-name>
-    <servlet-name>AdminGVThemtufile</servlet-name>
-    <servlet-class>controller.AdminGVThemtufile</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AdminGVThemtufile</servlet-name>
-    <url-pattern>/gv-uploadfile</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>ControllerSuaDeTai</display-name>
     <servlet-name>ControllerSuaDeTai</servlet-name>
     <servlet-class>controller.ControllerSuaDeTai</servlet-class>
@@ -124,22 +114,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>fhgfghfg</display-name>
-    <servlet-name>fhgfghfg</servlet-name>
-    <servlet-class>controller.fhgfghfg</servlet-class>
+    <display-name>ControllerThemGVFile</display-name>
+    <servlet-name>ControllerThemGVFile</servlet-name>
+    <servlet-class>controller.ControllerThemGVFile</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>fhgfghfg</servlet-name>
-    <url-pattern>/fhgfghfg</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>test1</display-name>
-    <servlet-name>test1</servlet-name>
-    <servlet-class>controller.test1</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>test1</servlet-name>
-    <url-pattern>/test1</url-pattern>
+    <servlet-name>ControllerThemGVFile</servlet-name>
+    <url-pattern>/themGV_file</url-pattern>
   </servlet-mapping>
 </web-app>
