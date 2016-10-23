@@ -1,6 +1,9 @@
 package controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.tomcat.util.http.fileupload.FileItem;
 
 /**
@@ -45,15 +49,26 @@ public class ControllerThemGVFile extends HttpServlet {
 			RequestDispatcher rd =request.getRequestDispatcher("ADmin_GV_ThemTuFile.jsp");
 			rd.forward(request, response);
 		}else{
-			String nameFile="";
+			String fileName="";
 			DiskFileItemFactory fif = new DiskFileItemFactory();
 			ServletFileUpload sfu = new ServletFileUpload(fif);
 			try {
 				List<org.apache.commons.fileupload.FileItem> listItem = sfu.parseRequest(request);
 				for(org.apache.commons.fileupload.FileItem file : listItem){
 					if(! file.isFormField()){
-						nameFile = file.getName();
-						System.out.println(nameFile);
+						fileName = file.getName();
+						SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyykkmmssSS");
+						Date date = new Date();
+						String fileName_new="DanhSach"+sdf.format(date)+"."+FilenameUtils.getExtension(fileName);
+						String filePath = request.getServletContext().getRealPath("") +File.separator+"files"+File.separator+fileName_new;
+						System.out.println(filePath);
+						File f = new File(filePath);
+						try {
+							file.write(f);
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
 				}
 				
