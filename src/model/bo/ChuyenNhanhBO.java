@@ -16,4 +16,7 @@ public class ChuyenNhanhBO {
 	public String getName(int id){
 		return cnDAO.getName(id);
 	}
+	public boolean isExist(int maCn){
+		return cnDAO.isExist(maCn);
+	}
 }

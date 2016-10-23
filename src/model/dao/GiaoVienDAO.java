@@ -194,5 +194,25 @@ public class GiaoVienDAO {
 		}
 		return objGV;
 	}
+	public boolean isExist(int maGvhd){
+		boolean result=false;
+		conn=c.getConnectSqlServer();
+		String sql = "select * from giaovien where magvhd = ?";
+		try {
+			pst=conn.prepareStatement(sql);
+			pst.setInt(1, maGvhd);
+			rs=pst.executeQuery();
+			if(rs.next()){
+				result=true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return result;
+		
+	}
+	
 
 }

@@ -57,7 +57,7 @@
 				<div class="well">
 				<h4 class="title" style="text-align:center;padding-bottom:10px;">THÊM SINH VIÊN</h4>
 				<ul class="nav">
-            		<li><a href="" >Thêm thông thường</a></li>
+            		<li><a href="<%=request.getContextPath()%>/themgvtt" >Thêm thông thường</a></li>
             		<li  style="background-color:#99FFFF"><a href="">Thêm từ file</a></li>
             		
             	</ul>

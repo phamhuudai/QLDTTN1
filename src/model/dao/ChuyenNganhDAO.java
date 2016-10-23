@@ -1,10 +1,13 @@
 package model.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+
 
 
 
@@ -15,6 +18,7 @@ public class ChuyenNganhDAO {
 	Connection conn;
 	ResultSet rs;
 	Statement stmt;
+	PreparedStatement pst;
 	public ChuyenNganhDAO(){
 		c= new ConnectionDB();
 	}
@@ -53,5 +57,24 @@ public class ChuyenNganhDAO {
 		}
 		return arCN;
 	}
+	public boolean isExist(int maCn){
+		boolean result=false;
+		conn=c.getConnectSqlServer();
+		String sql = "select * from chuyennganh where maCN = ? ";
+		try {
+			pst=conn.prepareStatement(sql);
+			pst.setInt(1, maCn);
+			rs=pst.executeQuery();
+			if(rs.next()){
+				result=true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		return result;
+		
+	}
+	
 
 }

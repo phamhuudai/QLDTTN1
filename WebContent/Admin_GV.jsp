@@ -160,7 +160,7 @@
 					</nav>	
 						
 					<!-- End Paging -->
-					<button class="btn btn-default" id="themGV" name="themTKGV" onclick="them()">Thêm TK Giáo Viên </button>
+					<a href="<%=request.getContextPath()%>/themgvtt"><button class="btn btn-default" id="themGV" name="themTKGV" >Thêm TK Giáo Viên </button></a>
 						
 					<%}
 					%>

@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.bean.GIAOVIEN;
+import model.bean.NGUOIDUNG;
+import model.bo.GiaoVienBO;
+import model.bo.NguoiDungBO;
 
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -21,6 +24,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.tomcat.util.http.fileupload.FileItem;
 
+import sun.font.GlyphLayout.GVData;
 import common.ReadExcelGV;
 
 /**
@@ -70,9 +74,27 @@ public class ControllerThemGVFile extends HttpServlet {
 						try {
 							file.write(f);
 							ReadExcelGV read = new ReadExcelGV();
-							ArrayList<GIAOVIEN> arGV =read.getListGV(filePath);
-							if(read.getError().size() > 0){
+							ArrayList<GIAOVIEN> arGV =read.getListGV(filePath);							
+							if(read.getError().size() == 0){
+								System.out.println(filePath);
 								System.out.println(arGV);
+								GiaoVienBO gvBO = new GiaoVienBO();
+								for(GIAOVIEN objGV :arGV){
+									int maSo=objGV.getMagvhd();
+									NGUOIDUNG nd = new NGUOIDUNG(maSo, "12345678", "GV");
+									NguoiDungBO ndBO = new NguoiDungBO();
+									if(ndBO.insertData(nd)){								
+										if(gvBO.insertData(objGV)){
+											response.sendRedirect(request.getContextPath()+"/danhsachgv?msg=add");
+										}else{
+											ndBO.delData(maSo);
+											response.sendRedirect(request.getContextPath()+"/danhsachgv?msg=error");
+											
+										}
+									}
+								}
+							}else{
+								
 							}
 							
 						} catch (Exception e) {

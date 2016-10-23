@@ -31,6 +31,9 @@ public class GiaoVienBO {
 		return gvDao.deleteData(id);
 		
 	}
+	public boolean isExist(int maGvhd){
+		return gvDao.isExist(maGvhd);
+	}
 	
 	
 }

@@ -143,7 +143,7 @@
 				<h4 class="title" style="text-align:center;padding-bottom:10px;">THÊM GIÁO VIÊN</h4>
 				<ul class="nav">
             		<li style="background-color:#99FFFF"><a href="" >Thêm thông thường</a></li>
-            		<li><a href="<%=request.getContextPath()%>/themGV_file">Thêm từ file</a></li>
+            		<li><a href="<%=request.getContextPath()%>/themGV_file?type=load">Thêm từ file</a></li>
             		
             	</ul>
 				</div>
