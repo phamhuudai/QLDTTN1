@@ -3,6 +3,7 @@ package controller;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,11 +13,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.bean.GIAOVIEN;
+
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.tomcat.util.http.fileupload.FileItem;
+
+import common.ReadExcelGV;
 
 /**
  * Servlet implementation class ControllerThemGVFile
@@ -61,10 +66,15 @@ public class ControllerThemGVFile extends HttpServlet {
 						Date date = new Date();
 						String fileName_new="DanhSach"+sdf.format(date)+"."+FilenameUtils.getExtension(fileName);
 						String filePath = request.getServletContext().getRealPath("") +File.separator+"files"+File.separator+fileName_new;
-						System.out.println(filePath);
 						File f = new File(filePath);
 						try {
 							file.write(f);
+							ReadExcelGV read = new ReadExcelGV();
+							ArrayList<GIAOVIEN> arGV =read.getListGV(filePath);
+							if(read.getError().size() > 0){
+								System.out.println(arGV);
+							}
+							
 						} catch (Exception e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
