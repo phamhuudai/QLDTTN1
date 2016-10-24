@@ -1,21 +1,26 @@
 package controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class test1
- */
-public class test1 extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+import model.bo.GiaoVienBO;
 
+/**
+ * Servlet implementation class ControllerTimKiemGV
+ */
+public class ControllerTimKiemGV extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
     /**
-     * Default constructor. 
+     * @see HttpServlet#HttpServlet()
      */
-    public test1() {
+    public ControllerTimKiemGV() {
+        super();
         // TODO Auto-generated constructor stub
     }
 
@@ -24,6 +29,7 @@ public class test1 extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		doPost(request, response);
 	}
 
 	/**
@@ -31,6 +37,11 @@ public class test1 extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String name=request.getParameter("ten");
+		GiaoVienBO gvBO = new GiaoVienBO();
+		request.setAttribute("arGVS", gvBO.search(name));
+		RequestDispatcher rd =request.getRequestDispatcher("/Admin_GV.jsp?search="+name);
+		rd.forward(request, response);
 	}
 
 }

@@ -16,7 +16,9 @@ public class GiaoVienBO {
 	public boolean updateData(GIAOVIEN objGV){
 		return gvDao.updateGV(objGV);
 	}
-	
+	public ArrayList<GIAOVIEN> search(String name){
+		return gvDao.searchData(name);
+	}
 	public GIAOVIEN getItemByID(int id){
 		return gvDao.getItemByID(id);
 	}

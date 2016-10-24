@@ -213,6 +213,32 @@ public class GiaoVienDAO {
 		return result;
 		
 	}
+	public ArrayList<GIAOVIEN> searchData(String name){
+		ArrayList<GIAOVIEN> arGV = new ArrayList<GIAOVIEN>();
+		conn=c.getConnectSqlServer();
+		try {
+			stmt=conn.createStatement();
+			String sql = "SELECT giaovien.MaGVHD, giaovien.HoTen, giaovien.NgaySinh, giaovien.MaCN, giaovien.Email, giaovien.DiaChi, giaovien.SDT, chuyennganh.TenCN from giaovien INNER JOIN  chuyennganh on giaovien.MaCN = chuyennganh.MaCN WHERE giaovien.HoTen LIKE N'%"+name+"%' ORDER BY magvhd";
+			rs=stmt.executeQuery(sql);
+			while(rs.next()){
+				int magvhd=rs.getInt("MaGVHD");
+				String hoten=rs.getString("HoTen");
+				java.util.Date ngaysinh=rs.getDate("NgaySinh");
+				int macn=rs.getInt("MaCN");
+				String email=rs.getString("Email");
+				String diachi=rs.getString("DiaChi");
+				String sdt=rs.getString("SDT");
+				String tenCN=rs.getString("TenCN");
+				GIAOVIEN gv = new GIAOVIEN(magvhd, hoten, ngaysinh, macn, email,diachi, sdt,tenCN);
+				arGV.add(gv);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return arGV;
+	}
 	
 
 }

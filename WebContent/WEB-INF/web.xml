@@ -54,16 +54,6 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>ControllerTimKiemGV</display-name>
-    <servlet-name>ControllerTimKiemGV</servlet-name>
-    <servlet-class>controller.ControllerTimKiemGV</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ControllerTimKiemGV</servlet-name>
-    <url-pattern>/timgv</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>ControllerDsDeTai</display-name>
     <servlet-name>ControllerDsDeTai</servlet-name>
     <servlet-class>controller.ControllerDsDeTai</servlet-class>
@@ -121,5 +111,15 @@
   <servlet-mapping>
     <servlet-name>ControllerThemGVFile</servlet-name>
     <url-pattern>/themGV_file</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ControllerTimKiemGV</display-name>
+    <servlet-name>ControllerTimKiemGV</servlet-name>
+    <servlet-class>controller.ControllerTimKiemGV</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerTimKiemGV</servlet-name>
+    <url-pattern>/timgv</url-pattern>
   </servlet-mapping>
 </web-app>

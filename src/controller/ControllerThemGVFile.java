@@ -94,7 +94,10 @@ public class ControllerThemGVFile extends HttpServlet {
 									}
 								}
 							}else{
-								
+								ArrayList<String> arError = read.getError();
+								request.setAttribute("arError", arError);
+								RequestDispatcher rd = request.getRequestDispatcher("/danhsachgv");
+								rd.forward(request, response);
 							}
 							
 						} catch (Exception e) {
