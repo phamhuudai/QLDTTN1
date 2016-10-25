@@ -4,14 +4,7 @@
   <welcome-file-list>
     <welcome-file>dangNhap.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <servlet-name>Login</servlet-name>
-    <servlet-class>controller.Login</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Login</servlet-name>
-    <url-pattern>/login</url-pattern>
-  </servlet-mapping>
+
   <servlet>
     <description></description>
     <display-name>ControllerDSGV</display-name>
@@ -121,5 +114,15 @@
   <servlet-mapping>
     <servlet-name>ControllerTimKiemGV</servlet-name>
     <url-pattern>/timgv</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ControllerLogin</display-name>
+    <servlet-name>ControllerLogin</servlet-name>
+    <servlet-class>controller.ControllerLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerLogin</servlet-name>
+    <url-pattern>/login</url-pattern>
   </servlet-mapping>
 </web-app>

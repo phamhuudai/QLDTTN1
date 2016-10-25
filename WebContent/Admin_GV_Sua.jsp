@@ -131,7 +131,7 @@
 			  
 	          ArrayList<CHUYENNGANH> arCN = (ArrayList<CHUYENNGANH>)request.getAttribute("arCN");
 	          GIAOVIEN objGV =(GIAOVIEN) request.getAttribute("objGV");
-	          out.print(objGV);
+	          
 	          SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	 %>
 			<div class="col-md-12">
