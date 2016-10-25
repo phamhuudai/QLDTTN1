@@ -13,6 +13,12 @@ public class GiaoVienBO {
 	public ArrayList<GIAOVIEN> getList(){
 		return gvDao.getList();
 	}
+	public int getRow(){
+		return gvDao.getRow();
+	}
+	public ArrayList<GIAOVIEN> getListByPage(int page, int numOfRecords){
+		return gvDao.getListByPage(page, numOfRecords);
+	}
 	public boolean updateData(GIAOVIEN objGV){
 		return gvDao.updateGV(objGV);
 	}
@@ -36,6 +42,7 @@ public class GiaoVienBO {
 	public boolean isExist(int maGvhd){
 		return gvDao.isExist(maGvhd);
 	}
+	
 	
 	
 }

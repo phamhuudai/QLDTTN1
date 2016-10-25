@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.bean.NGUOIDUNG;
-import bean.User;
+
 
 public class LibraryPer {
 	public static String checkUser(HttpServletRequest request, HttpServletResponse response){
@@ -20,8 +20,8 @@ public class LibraryPer {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			return false;
+			return "";
 		}
-		return true;
+		return "";
 	}
 }

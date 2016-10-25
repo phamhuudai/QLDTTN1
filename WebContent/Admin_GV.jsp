@@ -41,6 +41,7 @@
 	<%
 		ArrayList<GIAOVIEN> arGV = null;
 		int i=0;
+		
 		ArrayList<String> arError=null;
 		ArrayList<GIAOVIEN> arGVS=null;
 		if(request.getAttribute("arError")!= null){
@@ -146,7 +147,7 @@
 						<table class="table table-bordered">
 							<thead>
 								<tr>
-									<th>STT</th>
+
 									<th>MSGV</th>
 									<th>Tên GVHD</th>
 									<th>Ngày Sinh</th>
@@ -165,7 +166,7 @@
                     		i++;
                     	%>
 								<tr>
-									<td><%=i %></td>
+
 									<td><%=objGV.getMagvhd() %></td>
 									<td><a href="suagv?id=<%=objGV.getMagvhd() %>"><%=objGV.getHoten()%></a></td>
 									<td><%=objGV.getNgaysinh()!=null ? sdf.format(objGV.getNgaysinh()) : "--" %></td>
@@ -188,27 +189,35 @@
 
 
 					<!-- Paging -->
-
+					<%
+					int currentPage = (Integer)request.getAttribute("currentPage");
+					int numOfPage= (Integer)request.getAttribute("numOfPage");					
+					%>
 					<nav>
 					<ul class="pagination">
-						<li class=""><a href="" aria-label="Previous"><span
-								aria-hidden="true">&laquo;</span></a></li>
+					<%if(currentPage>1){%>
+							<li><a href="<%=request.getContextPath()%>/danhsachgv?page=<%=currentPage-1%>"><</a>
+						
+					<%	}%>
+					<%for(int p=currentPage-3;p<=currentPage+3;p++) {
+						
+						if(p>0 && p <=numOfPage){
+					%>
+						<li><a href="<%=request.getContextPath()%>/danhsachgv?page=<%=p%>" <%if(p==currentPage){%>style="color:red"<%} %>><%=p%></a></li>
 
-						<li class="active"><a href=""><%=1 %> <span
-								class="sr-only">(current)</span></a></li>
-
-
-						<li><a href="" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-
+					<%	}
+					}%>	
+					<%if(currentPage<numOfPage){%>
+							<li><a href="<%=request.getContextPath()%>/danhsachgv?page=<%=currentPage+1%>">></a>
+						
+					<%	}%>			
 					</ul>
-
 					</nav>
 
 					<!-- End Paging -->
 					<a href="<%=request.getContextPath()%>/themgvtt"><button
 							class="btn btn-default" id="themGV" name="themTKGV">Thêm
 							TK Giáo Viên</button></a>
-
 					<%}
 					%>
 				</div>

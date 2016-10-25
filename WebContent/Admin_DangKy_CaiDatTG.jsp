@@ -11,6 +11,7 @@
     <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
+
 	<div class="container">
 		 <div style="background-color: #337ab7; color: white"class="jumbotron">
 	  	<div class="row">
