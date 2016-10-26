@@ -291,9 +291,54 @@ public class GiaoVienDAO {
 	public int getRow(){
 		return this.row;
 	}
+	public ArrayList<GIAOVIEN> searchByPage(String name, int page,  int numOfRecords){
+		int offset=(page-1)*numOfRecords+1;
+		ArrayList<GIAOVIEN> arGV = new ArrayList<GIAOVIEN>();
+		conn=c.getConnectSqlServer();
+		String sql="SELECT giaovien.MaGVHD, giaovien.HoTen, giaovien.NgaySinh, giaovien.MaCN, giaovien.Email, giaovien.DiaChi, giaovien.SDT, chuyennganh.TenCN from ("
+				+ "select *, ROW_NUMBER() OVER (order by giaovien.MaGVHD DESC) as RN from giaovien WHERE HoTen like N'%"+name+"%') "// get RN: row number
+				+ "giaovien INNER JOIN  chuyennganh on giaovien.MaCN = chuyennganh.MaCN where RN BETWEEN "+offset+" AND "+(numOfRecords+offset-1)+" AND giaovien.HoTen like N'%"+name+"%'";		
+			System.out.println(sql);
+		try {
+			Statement stmt = conn.createStatement();
+			rs=stmt.executeQuery(sql);
+			while(rs.next()){
+				int magvhd=rs.getInt("MaGVHD");
+				String hoten=rs.getString("HoTen");
+				java.util.Date ngaysinh=rs.getDate("NgaySinh");
+				int macn=rs.getInt("MaCN");
+				String email=rs.getString("Email");
+				String diachi=rs.getString("DiaChi");
+				String sdt=rs.getString("SDT");
+				String tenCN=rs.getString("TenCN");
+				GIAOVIEN gv = new GIAOVIEN(magvhd, hoten, ngaysinh, macn, email,diachi, sdt,tenCN);
+				arGV.add(gv);
+				
+			}
+			rs=stmt.executeQuery("Select count(*) from giaovien WHERE HoTen like N'%"+name+"%'");
+			if(rs.next()){
+				this.row=rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		finally{
+			try {
+
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return arGV;
+		
+	}
 	/*public static void main(String[] args) {
 		GiaoVienDAO gv = new GiaoVienDAO();
-		ArrayList<GIAOVIEN> arGV =gv.getListByPage(3, 2);
+		ArrayList<GIAOVIEN> arGV =gv.searchByPage("Phạm",6, 2);
 		for(int i=0;i<arGV.size();i++){
 			System.out.println(arGV.get(i).getMagvhd());
 			

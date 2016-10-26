@@ -19,6 +19,9 @@ public class GiaoVienBO {
 	public ArrayList<GIAOVIEN> getListByPage(int page, int numOfRecords){
 		return gvDao.getListByPage(page, numOfRecords);
 	}
+	public ArrayList<GIAOVIEN> searchByPage(String name, int page, int numOfRecords){
+		return gvDao.searchByPage(name, page, numOfRecords);
+	}
 	public boolean updateData(GIAOVIEN objGV){
 		return gvDao.updateGV(objGV);
 	}

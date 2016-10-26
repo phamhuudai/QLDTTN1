@@ -18,6 +18,17 @@
     	function them(){
     		window.location="themgvtt";
     	}
+    	$(document).ready(function() {
+    		$("#btn-tim").click(function() {
+    			var name = $("#ip-tim").val();
+    			if (name == "") {
+    				alert("Vui lòng nhập nội dung tìm kiếm !");
+    			} else {
+    				$("#form-tim").submit();
+    			}
+    		});
+
+    	});
     </script>
 </head>
 <body>
@@ -98,12 +109,12 @@
 					}else{
 					%>
 					<h4>DANH SÁCH GIÁO VIÊN</h4>
-					<form action="<%=request.getContextPath()%>/timgv">
+					<form action="<%=request.getContextPath()%>/timgv" id="form-tim">
 						<div class="input-group panel panel-default">
-							<input type="text" class="form-control" name="ten"
-								placeholder="Tìm kiếm...">
+							<input type="text" class="form-control" name="name"
+								placeholder="Tìm kiếm..." id="ip-tim">
 							<div class="input-group-btn">
-								<button type="submit" class="btn btn-default">Tìm</button>
+								<a id="btn-tim" class="btn btn-default">Tìm</a>
 							</div>
 						</div>
 					</form>

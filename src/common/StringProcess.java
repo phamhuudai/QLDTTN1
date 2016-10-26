@@ -1,5 +1,8 @@
 package common; 
 
+import java.text.Normalizer;
+import java.util.regex.Pattern;
+
 /**
  * StringProcess.java
  *
@@ -22,6 +25,8 @@ public class StringProcess {
 	 * @param val
 	 * @return String
 	 */
+    
+	
 	public static String gioiTinh(String val) {
 		if("0".equals(val)){
 			return "Nữ";
@@ -60,5 +65,15 @@ public class StringProcess {
 		if(s.matches(regex)) return false;
 		return true;
 	}
+
+	    public static String unAccent(String s) {
+	            String temp = Normalizer.normalize(s, Normalizer.Form.NFD);
+	            Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+	            return pattern.matcher(temp).replaceAll("").replaceAll("Đ", "D").replaceAll("đ", "d");
+	    }
+/*	public static void main(String[] args) {
+		StringProcess str = new StringProcess();
+		System.out.println(str.unAccent("Phạm Hữu Đại"));
+	}*/
 }
 

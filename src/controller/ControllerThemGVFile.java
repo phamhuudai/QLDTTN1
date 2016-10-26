@@ -85,7 +85,7 @@ public class ControllerThemGVFile extends HttpServlet {
 									NguoiDungBO ndBO = new NguoiDungBO();
 									if(ndBO.insertData(nd)){								
 										if(gvBO.insertData(objGV)){
-											response.sendRedirect(request.getContextPath()+"/danhsachgv?msg=add");
+											continue;
 										}else{
 											ndBO.delData(maSo);
 											response.sendRedirect(request.getContextPath()+"/danhsachgv?msg=error");
@@ -93,6 +93,7 @@ public class ControllerThemGVFile extends HttpServlet {
 										}
 									}
 								}
+								response.sendRedirect(request.getContextPath()+"/danhsachgv?msg=add");
 							}else{
 								ArrayList<String> arError = read.getError();
 								request.setAttribute("arError", arError);
