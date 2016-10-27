@@ -25,6 +25,7 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.tomcat.util.http.fileupload.FileItem;
 
 import sun.font.GlyphLayout.GVData;
+import common.LibraryPer;
 import common.ReadExcelGV;
 
 /**
@@ -54,6 +55,9 @@ public class ControllerThemGVFile extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		if(! LibraryPer.isAdmin(request, response)){
+			return;
+		}
 		if("load".equals(request.getParameter("type"))){
 			RequestDispatcher rd =request.getRequestDispatcher("ADmin_GV_ThemTuFile.jsp");
 			rd.forward(request, response);

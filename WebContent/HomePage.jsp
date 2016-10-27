@@ -59,6 +59,9 @@
 				<div class="well">
 					<form class="form-login" id="form" role="form" action="login" onsubmit="return check()" method="post">
 					<h3 class="">Đăng nhập</h3>
+					<%if(request.getAttribute("error")!=null)
+						out.print("<span style='color:red'>Sai tên đăng nhập hoặc mật khẩu </span>");
+						%>
 						<fieldset>
 								<div class="form-group">
 									<input class="form-control"  id="userName" placeholder="Tên Đăng nhập" name="userName" type="text" autofocus>

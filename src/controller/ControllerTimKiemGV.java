@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import common.LibraryConst;
+import common.LibraryPer;
 import common.StringProcess;
 import model.bean.GIAOVIEN;
 import model.bo.GiaoVienBO;
@@ -41,6 +42,9 @@ public class ControllerTimKiemGV extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		if(! LibraryPer.isAdmin(request, response)){
+			return;
+		}
 		String name=request.getParameter("name");
 		/*StringProcess strPr = new StringProcess();
 		name=strPr.unAccent(name);*/

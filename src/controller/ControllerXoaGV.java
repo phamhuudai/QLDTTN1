@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import common.LibraryPer;
+
 import model.bo.GiaoVienBO;
 import model.bo.NguoiDungBO;
 import model.bo.ThongBaoBO;
@@ -40,6 +42,9 @@ public class ControllerXoaGV extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		if(! LibraryPer.isAdmin(request, response)){
+			return;
+		}
 		int maGV =Integer.parseInt(request.getParameter("id"));
 		GiaoVienBO gvBO = new GiaoVienBO();
 		ThongBaoBO tbBO = new ThongBaoBO();

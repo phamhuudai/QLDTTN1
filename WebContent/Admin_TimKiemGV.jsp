@@ -47,9 +47,6 @@
 		</div>
 	</div>
 	<!-- container1 -->
-	<%
-		ArrayList<GIAOVIEN>	arGV=(ArrayList<GIAOVIEN>)request.getAttribute("arGV");
-	%>
 	<div class="container">
 		<div class="link">
 			<nav class="navbar navbar-inverse">
@@ -95,22 +92,19 @@
 							</div>
 						</div>
 					</form>
-					<%
-						if(arGV==null){
-											out.print("<span style='color:red'>Không tìm thấy dữ liệu</span><br>");
-										}else{
-										out.print("<span style='color:red'>Hiển thị "+arGV.size()+" trên "+(Integer)request.getAttribute("numOfRecord")+" kết quả</span><br>");
-										}
-					%>
-
 					<!-- Do du lieu tai day  -->
-
-
+	<%
+		ArrayList<GIAOVIEN>	arGV=(ArrayList<GIAOVIEN>)request.getAttribute("arGV");
+		if(arGV==null){
+			out.print("<span style='color:red'>Không tìm thấy dữ liệu</span><br>");
+		}else{
+			out.print("<span style='color:red'>Hiển thị "+arGV.size()+" trên "+(Integer)request.getAttribute("numOfRecord")+" kết quả</span><br>");
+		}
+	%>
 					<div class="panel panel-default">
 						<table class="table table-bordered">
 							<thead>
 								<tr>
-
 									<th>MSGV</th>
 									<th>Tên GVHD</th>
 									<th>Ngày Sinh</th>
@@ -123,17 +117,15 @@
 								</tr>
 							</thead>
 							<tbody>
-								<%
-									SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-								                    	for(GIAOVIEN objGV:arGV){
-								%>
+		<%
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		       for(GIAOVIEN objGV:arGV){
+		%>
 								<tr>
-
 									<td><%=objGV.getMagvhd()%></td>
 									<td><a href="suagv?id=<%=objGV.getMagvhd()%>"><%=objGV.getHoten()%></a></td>
 									<td><%=objGV.getNgaysinh()!=null ? sdf.format(objGV.getNgaysinh()) : "--"%></td>
 									<td><%=objGV.getTencn()%></td>
-
 									<td><%=objGV.getEmail()%></td>
 									<td><%=objGV.getSdt()%></td>
 									<td><%=objGV.getDiaChi()%></td>
@@ -141,12 +133,10 @@
 									<td><input type="image" name="del_Btn"
 										src="images/recyclebin-512.png" class="image-btn"
 										onclick=" if(!confirm('Có muốn xóa ? ')) return false; else window.location='xoagv?id=<%=objGV.getMagvhd()%>';"></td>
-
 								</tr>
 								<%
 									}
 								%>
-
 							</tbody>
 						</table>
 					</div>
@@ -191,43 +181,32 @@
 					</div>
 
 					<!-- Paging -->
-					<%
-						String name = String.valueOf(request.getAttribute("name"));
-								int currentPage = (Integer)request.getAttribute("currentPage");
-								int numOfPage= (Integer)request.getAttribute("numOfPage");
-					%>
+			<%
+				String name = String.valueOf(request.getAttribute("name"));
+				int currentPage = (Integer)request.getAttribute("currentPage");
+				int numOfPage= (Integer)request.getAttribute("numOfPage");
+			%>
 					<nav>
 					<ul class="pagination">
-						<%
-							if(currentPage>1){
-						%>
-						<li><a
-							href="<%=request.getContextPath()%>/timgv?name=<%=name%>&page=<%=currentPage-1%>"><</a>
-
-							<%
-								}
-							%> <%
- 	for(int p=currentPage-3;p<=currentPage+3;p++) {
- 				
- 				if(p>0 && p <=numOfPage){
- %>
-						<li><a
-							href="<%=request.getContextPath()%>/timgv?name=<%=name%>&page=<%=p%>"
-							<%if(p==currentPage){%> style="color: red" <%}%>><%=p%></a></li>
-
-						<%
-							}
-									}
-						%>
-						<%
-							if(currentPage<numOfPage){
-						%>
-						<li><a
-							href="<%=request.getContextPath()%>/timgv?name=<%=name%>&page=<%=currentPage+1%>">></a>
-
-							<%
-								}
-							%>
+			<%
+				if(currentPage>1){
+			%>
+						<li><a href="<%=request.getContextPath()%>/timgv?name=<%=name%>&page=<%=currentPage-1%>"><</a>
+			<%
+				}
+			 	for(int p=currentPage-3;p<=currentPage+3;p++) {			 				
+			 				if(p>0 && p <=numOfPage){
+			%>
+						<li><a href="<%=request.getContextPath()%>/timgv?name=<%=name%>&page=<%=p%>" <%if(p==currentPage){%> style="color: red" <%}%>><%=p%></a></li>
+			<%
+					}
+				}
+				if(currentPage<numOfPage){
+			%>
+						<li><a href="<%=request.getContextPath()%>/timgv?name=<%=name%>&page=<%=currentPage+1%>">></a>
+			<%
+				}
+			%>
 					</ul>
 					</nav>
 				</div>

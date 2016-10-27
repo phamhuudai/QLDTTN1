@@ -134,4 +134,14 @@
     <servlet-name>ControllerDSQL</servlet-name>
     <url-pattern>/danhsach</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ControllerLogout</display-name>
+    <servlet-name>ControllerLogout</servlet-name>
+    <servlet-class>controller.ControllerLogout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerLogout</servlet-name>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
 </web-app>

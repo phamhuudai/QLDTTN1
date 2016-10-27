@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import common.LibraryConst;
-
+import common.LibraryPer;
 import model.bean.GIAOVIEN;
 import model.bo.GiaoVienBO;
 import model.dao.ChuyenNganhDAO;
@@ -43,6 +43,9 @@ public class ControllerDSGV extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		if(! LibraryPer.isAdmin(request, response)){
+			return;
+		}
 		GiaoVienBO gvBO = new GiaoVienBO();
 		int currentPage=1;
 		if(request.getParameter("page")!=null){
