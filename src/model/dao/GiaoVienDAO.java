@@ -298,7 +298,7 @@ public class GiaoVienDAO {
 		String sql="SELECT giaovien.MaGVHD, giaovien.HoTen, giaovien.NgaySinh, giaovien.MaCN, giaovien.Email, giaovien.DiaChi, giaovien.SDT, chuyennganh.TenCN from ("
 				+ "select *, ROW_NUMBER() OVER (order by giaovien.MaGVHD DESC) as RN from giaovien WHERE HoTen like N'%"+name+"%') "// get RN: row number
 				+ "giaovien INNER JOIN  chuyennganh on giaovien.MaCN = chuyennganh.MaCN where RN BETWEEN "+offset+" AND "+(numOfRecords+offset-1)+" AND giaovien.HoTen like N'%"+name+"%'";		
-			System.out.println(sql);
+			
 		try {
 			Statement stmt = conn.createStatement();
 			rs=stmt.executeQuery(sql);

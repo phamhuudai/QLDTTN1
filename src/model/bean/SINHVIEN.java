@@ -8,6 +8,35 @@ public class SINHVIEN {
 	private String macn;
 	private String email;
 	private String sdt;
+	private String lop;
+	private String chuyenNganh;
+	
+	public SINHVIEN(String mssv, String hoten, String ngaysinh, String malop,
+			String macn, String email, String sdt, String lop,
+			String chuyenNganh) {
+		super();
+		this.mssv = mssv;
+		this.hoten = hoten;
+		this.ngaysinh = ngaysinh;
+		this.malop = malop;
+		this.macn = macn;
+		this.email = email;
+		this.sdt = sdt;
+		this.lop = lop;
+		this.chuyenNganh = chuyenNganh;
+	}
+	public String getLop() {
+		return lop;
+	}
+	public void setLop(String lop) {
+		this.lop = lop;
+	}
+	public String getChuyenNganh() {
+		return chuyenNganh;
+	}
+	public void setChuyenNganh(String chuyenNganh) {
+		this.chuyenNganh = chuyenNganh;
+	}
 	public SINHVIEN(String mssv, String hoten, String ngaysinh, String malop,
 			String macn, String email, String sdt) {
 		super();

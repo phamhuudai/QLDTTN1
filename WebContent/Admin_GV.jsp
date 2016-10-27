@@ -15,21 +15,21 @@
 <script src="js/jquery-1.11.2.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
-    	function them(){
-    		window.location="themgvtt";
-    	}
-    	$(document).ready(function() {
-    		$("#btn-tim").click(function() {
-    			var name = $("#ip-tim").val();
-    			if (name == "") {
-    				alert("Vui lòng nhập nội dung tìm kiếm !");
-    			} else {
-    				$("#form-tim").submit();
-    			}
-    		});
+	function them() {
+		window.location = "themgvtt";
+	}
+	$(document).ready(function() {
+		$("#btn-tim").click(function() {
+			var name = $("#ip-tim").val();
+			if (name == "") {
+				alert("Vui lòng nhập nội dung tìm kiếm !");
+			} else {
+				$("#form-tim").submit();
+			}
+		});
 
-    	});
-    </script>
+	});
+</script>
 </head>
 <body>
 	<div class="container">
@@ -51,22 +51,21 @@
 	<!-- container1 -->
 	<%
 		ArrayList<GIAOVIEN> arGV = null;
-		int i=0;
-		
-		ArrayList<String> arError=null;
-		ArrayList<GIAOVIEN> arGVS=null;
-		if(request.getAttribute("arError")!= null){
-			arError=(ArrayList<String>)request.getAttribute("arError");
+			int i=0;
 			
-		}
-		if(request.getAttribute("arGV")!=null){
-			arGV=(ArrayList<GIAOVIEN>)request.getAttribute("arGV");
-		}
-		if(request.getAttribute("arGVS") !=null){
-			arGVS=(ArrayList<GIAOVIEN>)request.getAttribute("arGVS");
-			
-		}
+			ArrayList<String> arError=null;
+			ArrayList<GIAOVIEN> arGVS=null;
+			if(request.getAttribute("arError")!= null){
+		arError=(ArrayList<String>)request.getAttribute("arError");
 		
+			}
+			if(request.getAttribute("arGV")!=null){
+		arGV=(ArrayList<GIAOVIEN>)request.getAttribute("arGV");
+			}
+			if(request.getAttribute("arGVS") !=null){
+		arGVS=(ArrayList<GIAOVIEN>)request.getAttribute("arGVS");
+		
+			}
 	%>
 	<div class="container">
 		<div class="link">
@@ -103,10 +102,11 @@
 
 			<div class="col-md-12">
 				<div class="well">
-					<%if(arGV== null && request.getParameter("search") == null){
-						out.print("<h3 align='center'>Không Có Dữ Liệu!!!</h3>");
-						out.print("<button class='btn btn-default' id='themGV' name='themTKGV' onclick='them()''>Thêm TK Giáo Viên </button>");
-					}else{
+					<%
+						if(arGV== null && request.getParameter("search") == null){
+									out.print("<h3 align='center'>Không Có Dữ Liệu!!!</h3>");
+									out.print("<button class='btn btn-default' id='themGV' name='themTKGV' onclick='them()''>Thêm TK Giáo Viên </button>");
+								}else{
 					%>
 					<h4>DANH SÁCH GIÁO VIÊN</h4>
 					<form action="<%=request.getContextPath()%>/timgv" id="form-tim">
@@ -119,36 +119,32 @@
 						</div>
 					</form>
 					<%
-						
 						if(request.getParameter("msg")!=null){
-							String msg = request.getParameter("msg");
-							if("edit".equals(msg)){
-								out.print("<span style='color:red'> Sửa thành công !</span>");							
-							}else  if("add".equals(msg)){
-								out.print("<span style='color:red'> Thêm thành công !</span>");	
-							}else  if("del".equals(msg)){
-								out.print("<span style='color:red'> Xóa thành công !</span>");	
-							}else  if("error".equals(msg)){
-								out.print("<span style='color:red'> Có lỗi, vui lòng thử lại !</span>");	
-							}
-						}
-						if(arError!=null){
-							out.print("<span style='color:red'> Thêm không thành công !</span><br>");
-							for(int j=0;j<arError.size();j++){
-								out.print("<span style='color:red'>"+arError.get(j)+"</span><br>");	
-							}
-						}
-						if(request.getParameter("search") !=null ){
-							if(arGVS==null){
-								out.print("<span style='color:red'>Không tìm thấy dữ liệu</span><br>");
-							}else{
-								arGV=arGVS;
-							out.print("<span style='color:red'>Tìm thấy "+arGV.size()+" kết quả</span><br>");
-							}
-						}
-							
-							
-						
+										String msg = request.getParameter("msg");
+										if("edit".equals(msg)){
+											out.print("<span style='color:red'> Sửa thành công !</span>");							
+										}else  if("add".equals(msg)){
+											out.print("<span style='color:red'> Thêm thành công !</span>");	
+										}else  if("del".equals(msg)){
+											out.print("<span style='color:red'> Xóa thành công !</span>");	
+										}else  if("error".equals(msg)){
+											out.print("<span style='color:red'> Có lỗi, vui lòng thử lại !</span>");	
+										}
+									}
+									if(arError!=null){
+										out.print("<span style='color:red'> Thêm không thành công !</span><br>");
+										for(int j=0;j<arError.size();j++){
+											out.print("<span style='color:red'>"+arError.get(j)+"</span><br>");	
+										}
+									}
+									if(request.getParameter("search") !=null ){
+										if(arGVS==null){
+											out.print("<span style='color:red'>Không tìm thấy dữ liệu</span><br>");
+										}else{
+											arGV=arGVS;
+										out.print("<span style='color:red'>Tìm thấy "+arGV.size()+" kết quả</span><br>");
+										}
+									}
 					%>
 
 					<!-- Do du lieu tai day  -->
@@ -172,56 +168,111 @@
 							</thead>
 							<tbody>
 								<%
-                    	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                    	for(GIAOVIEN objGV:arGV){
-                    		i++;
-                    	%>
+									SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+								                    	for(GIAOVIEN objGV:arGV){
+								                    		
+								%>
 								<tr>
 
-									<td><%=objGV.getMagvhd() %></td>
-									<td><a href="suagv?id=<%=objGV.getMagvhd() %>"><%=objGV.getHoten()%></a></td>
-									<td><%=objGV.getNgaysinh()!=null ? sdf.format(objGV.getNgaysinh()) : "--" %></td>
+									<td><%=objGV.getMagvhd()%></td>
+									<td><a href="suagv?id=<%=objGV.getMagvhd()%>"><%=objGV.getHoten()%></a></td>
+									<td><%=objGV.getNgaysinh()!=null ? sdf.format(objGV.getNgaysinh()) : "--"%></td>
 									<td><%=objGV.getTencn()%></td>
 
-									<td><%=objGV.getEmail() %></td>
-									<td><%=objGV.getSdt() %></td>
-									<td><%=objGV.getDiaChi() %></td>
-									<td><a href="#">Danh sách</a></td>
+									<td><%=objGV.getEmail()%></td>
+									<td><%=objGV.getSdt()%></td>
+									<td><%=objGV.getDiaChi()%></td>
+									<td><a href="javascript:void(0)" class="danhsach" id="<%=objGV.getMagvhd()%>">Danh sách</a></td>
 									<td><input type="image" name="del_Btn"
 										src="images/recyclebin-512.png" class="image-btn"
 										onclick=" if(!confirm('Có muốn xóa ? ')) return false; else window.location='xoagv?id=<%=objGV.getMagvhd()%>';"></td>
 
 								</tr>
-								<%} %>
+								<%
+									}
+								%>
 
 							</tbody>
 						</table>
 					</div>
-
-
+					<!-- Modal -->
+					
+					<script type="text/javascript">				
+						$(document).ready(function() {
+							$(".danhsach").click(function(){
+								var id= $(this).attr("id");
+								$.ajax({
+									url : "<%=request.getContextPath()%>/danhsach",
+									type: 'POST',
+									cache: false,
+									data: {
+										maGV:id,
+									},
+									success : function(data) {
+										$("#content-ds").html(data);
+										$("#myModal").modal();
+									}
+								});
+							});
+						});
+					</script>
+					<div class="modal fade" id="myModal" role="dialog">
+					  <div class="modal-dialog modal-lg">					
+					    <!-- Modal content-->
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal">&times;</button>
+					        <h4 class="modal-title">Danh sách quản lý</h4>
+					      </div>
+					      <div class="modal-body" id="content-ds">
+					       
+					      </div>
+					      <div class="modal-footer text-center">
+					        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					      </div>
+					    </div>
+					
+					  </div>
+					</div>
+						
+						
 					<!-- Paging -->
 					<%
-					int currentPage = (Integer)request.getAttribute("currentPage");
-					int numOfPage= (Integer)request.getAttribute("numOfPage");					
+						int currentPage = (Integer)request.getAttribute("currentPage");
+								int numOfPage= (Integer)request.getAttribute("numOfPage");
 					%>
 					<nav>
 					<ul class="pagination">
-					<%if(currentPage>1){%>
-							<li><a href="<%=request.getContextPath()%>/danhsachgv?page=<%=currentPage-1%>"><</a>
-						
-					<%	}%>
-					<%for(int p=currentPage-3;p<=currentPage+3;p++) {
-						
-						if(p>0 && p <=numOfPage){
-					%>
-						<li><a href="<%=request.getContextPath()%>/danhsachgv?page=<%=p%>" <%if(p==currentPage){%>style="color:red"<%} %>><%=p%></a></li>
+						<%
+							if(currentPage>1){
+						%>
+						<li><a
+							href="<%=request.getContextPath()%>/danhsachgv?page=<%=currentPage-1%>"><</a>
 
-					<%	}
-					}%>	
-					<%if(currentPage<numOfPage){%>
-							<li><a href="<%=request.getContextPath()%>/danhsachgv?page=<%=currentPage+1%>">></a>
-						
-					<%	}%>			
+							<%
+								}
+							%> <%
+ 	for(int p=currentPage-3;p<=currentPage+3;p++) {
+ 				
+ 				if(p>0 && p <=numOfPage){
+ %>
+						<li><a
+							href="<%=request.getContextPath()%>/danhsachgv?page=<%=p%>"
+							<%if(p==currentPage){%> style="color: red" <%}%>><%=p%></a></li>
+
+						<%
+							}
+									}
+						%>
+						<%
+							if(currentPage<numOfPage){
+						%>
+						<li><a
+							href="<%=request.getContextPath()%>/danhsachgv?page=<%=currentPage+1%>">></a>
+
+							<%
+								}
+							%>
 					</ul>
 					</nav>
 
@@ -229,7 +280,8 @@
 					<a href="<%=request.getContextPath()%>/themgvtt"><button
 							class="btn btn-default" id="themGV" name="themTKGV">Thêm
 							TK Giáo Viên</button></a>
-					<%}
+					<%
+						}
 					%>
 				</div>
 

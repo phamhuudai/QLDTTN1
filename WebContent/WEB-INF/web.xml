@@ -4,7 +4,6 @@
   <welcome-file-list>
     <welcome-file>dangNhap.jsp</welcome-file>
   </welcome-file-list>
-
   <servlet>
     <description></description>
     <display-name>ControllerDSGV</display-name>
@@ -124,5 +123,15 @@
   <servlet-mapping>
     <servlet-name>ControllerLogin</servlet-name>
     <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ControllerDSQL</display-name>
+    <servlet-name>ControllerDSQL</servlet-name>
+    <servlet-class>controller.ControllerDSQL</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerDSQL</servlet-name>
+    <url-pattern>/danhsach</url-pattern>
   </servlet-mapping>
 </web-app>

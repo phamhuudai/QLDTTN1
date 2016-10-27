@@ -137,7 +137,7 @@
 									<td><%=objGV.getEmail()%></td>
 									<td><%=objGV.getSdt()%></td>
 									<td><%=objGV.getDiaChi()%></td>
-									<td><a href="#">Danh sách</a></td>
+									<td><a href="javascript:void{0}" class="danhsach" id="<%=objGV.getMagvhd()%>">Danh sách</a></td>
 									<td><input type="image" name="del_Btn"
 										src="images/recyclebin-512.png" class="image-btn"
 										onclick=" if(!confirm('Có muốn xóa ? ')) return false; else window.location='xoagv?id=<%=objGV.getMagvhd()%>';"></td>
@@ -150,7 +150,45 @@
 							</tbody>
 						</table>
 					</div>
-
+				<!-- Modal -->
+					
+					<script type="text/javascript">				
+						$(document).ready(function() {
+							$(".danhsach").click(function(){
+								var id= $(this).attr("id");
+								$.ajax({
+									url : "<%=request.getContextPath()%>/danhsach",
+									type: 'POST',
+									cache: false,
+									data: {
+										maGV:id,
+									},
+									success : function(data) {
+										$("#content-ds").html(data);
+										$("#myModal").modal();
+									}
+								});
+							});
+						});
+					</script>
+					<div class="modal fade" id="myModal" role="dialog">
+					  <div class="modal-dialog modal-lg">					
+					    <!-- Modal content-->
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal">&times;</button>
+					        <h4 class="modal-title">Danh sách quản lý</h4>
+					      </div>
+					      <div class="modal-body" id="content-ds">
+					       
+					      </div>
+					      <div class="modal-footer text-center">
+					        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					      </div>
+					    </div>
+					
+					  </div>
+					</div>
 
 					<!-- Paging -->
 					<%
