@@ -1,5 +1,6 @@
 package common; 
 
+import java.io.UnsupportedEncodingException;
 import java.text.Normalizer;
 import java.util.regex.Pattern;
 
@@ -71,6 +72,16 @@ public class StringProcess {
 	            Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
 	            return pattern.matcher(temp).replaceAll("").replaceAll("Đ", "D").replaceAll("đ", "d");
 	    }
+	public static String convertUTF8(String str){
+		String result="";
+		try {
+			result = new String(str.getBytes("ISO-8859-1"),"UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
 /*	public static void main(String[] args) {
 		StringProcess str = new StringProcess();
 		System.out.println(str.unAccent("Phạm Hữu Đại"));

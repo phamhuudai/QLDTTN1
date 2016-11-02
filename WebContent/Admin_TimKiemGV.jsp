@@ -88,7 +88,7 @@
 							<input type="text" class="form-control" name="name"
 								placeholder="Tìm kiếm..." id="ip-tim">
 							<div class="input-group-btn">
-								<a class="btn btn-default" id="btn-tim">Tìm</a>
+								<a class="btn btn-default" id="btn-tim" name="search" value="search">Tìm</a>
 							</div>
 						</div>
 					</form>

@@ -30,7 +30,8 @@ public class GiaoVienDAO {
 		conn=c.getConnectSqlServer();
 		try {
 			stmt=conn.createStatement();
-			String sql =strInner+ "ORDER BY magvhd";
+			String sql =strInner+ " ORDER BY giaovien.magvhd";
+
 			rs=stmt.executeQuery(sql);
 			while(rs.next()){
 				int magvhd=rs.getInt("MaGVHD");

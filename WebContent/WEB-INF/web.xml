@@ -46,13 +46,13 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>ControllerDsDeTai</display-name>
-    <servlet-name>ControllerDsDeTai</servlet-name>
-    <servlet-class>controller.ControllerDsDeTai</servlet-class>
+    <display-name>ControllerDSDT</display-name>
+    <servlet-name>ControllerDSDT</servlet-name>
+    <servlet-class>controller.ControllerDSDT</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ControllerDsDeTai</servlet-name>
-    <url-pattern>/danhsachdt</url-pattern>
+    <servlet-name>ControllerDSDT</servlet-name>
+    <url-pattern>/danhsachdetai</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -86,13 +86,13 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>ControllerSuaDeTai</display-name>
-    <servlet-name>ControllerSuaDeTai</servlet-name>
-    <servlet-class>controller.ControllerSuaDeTai</servlet-class>
+    <display-name>ControllerSuaDT</display-name>
+    <servlet-name>ControllerSuaDT</servlet-name>
+    <servlet-class>controller.ControllerSuaDT</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ControllerSuaDeTai</servlet-name>
-    <url-pattern>/suadt</url-pattern>
+    <servlet-name>ControllerSuaDT</servlet-name>
+    <url-pattern>/suadetai</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -103,6 +103,16 @@
   <servlet-mapping>
     <servlet-name>ControllerThemGVFile</servlet-name>
     <url-pattern>/themGV_file</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ControllerThemDTFile</display-name>
+    <servlet-name>ControllerThemDTFile</servlet-name>
+    <servlet-class>controller.ControllerThemDTFile</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerThemDTFile</servlet-name>
+    <url-pattern>/themdetai-file</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -136,6 +146,16 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>ControllerThemDTTT</display-name>
+    <servlet-name>ControllerThemDTTT</servlet-name>
+    <servlet-class>controller.ControllerThemDTTT</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerThemDTTT</servlet-name>
+    <url-pattern>/themdetaitt</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>ControllerLogout</display-name>
     <servlet-name>ControllerLogout</servlet-name>
     <servlet-class>controller.ControllerLogout</servlet-class>
@@ -143,5 +163,45 @@
   <servlet-mapping>
     <servlet-name>ControllerLogout</servlet-name>
     <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ControllerTheoDoiTienDo</display-name>
+    <servlet-name>ControllerTheoDoiTienDo</servlet-name>
+    <servlet-class>controller.ControllerTheoDoiTienDo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerTheoDoiTienDo</servlet-name>
+    <url-pattern>/ControllerTheoDoiTienDo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ControllerXoaDeTai</display-name>
+    <servlet-name>ControllerXoaDeTai</servlet-name>
+    <servlet-class>controller.ControllerXoaDeTai</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerXoaDeTai</servlet-name>
+    <url-pattern>/xoadetai</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ControllerTimKiemDeTai</display-name>
+    <servlet-name>ControllerTimKiemDeTai</servlet-name>
+    <servlet-class>controller.ControllerTimKiemDeTai</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerTimKiemDeTai</servlet-name>
+    <url-pattern>/timkiemdetai</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ControllerOutputExcelDeTai</display-name>
+    <servlet-name>ControllerOutputExcelDeTai</servlet-name>
+    <servlet-class>controller.ControllerOutputExcelDeTai</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerOutputExcelDeTai</servlet-name>
+    <url-pattern>/ControllerOutputExcelDeTai</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -67,21 +67,20 @@
 			<div class="col-md-9">
 			<div class="well">
 				<h4>NHẬP TỪ FILE</h4>
-                <form  action="">
+                <form action="<%=request.getContextPath()%>/themdetai-file"	enctype="multipart/form-data" method="post">
                   
-				    <div class="form-group">
-                        <label class="control-label col-xs-2">Chọn file</label>
-                        <div class="col-xs-10">
-                            <input type="file" class="file">
-                            <p class="help-block">Chọn file .xlsx</p>
-                        </div>
-                    </div>
-				  
-
+				   <div class="form-group">
+						<label class="control-label col-xs-2">Chọn file</label>
+						<div class="col-xs-10">
+							<input type="file" class="file" name="danhSachGV">
+							<p class="help-block">Chọn file .xlsx</p>
+						</div>
+					</div>				  
+				<button class="btn btn-default" id="GV_Nhapbtn" type="submit">Nhập</button>
+				<button class="btn btn-default" id="GV_Huybtn">Hủy</button>
                       
                 </form>
-                <button class="btn btn-default" id="GV_Nhapbtn">Nhập</button>
-				<button class="btn btn-default" id="GV_Huybtn">Hủy</button>
+                
                 </div>
 				
 					

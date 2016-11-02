@@ -45,9 +45,9 @@ public class IdProcess {
 		
 		return idInt+1;
 	}
-	public static void main(String[] agrs){
+	/*public static void main(String[] agrs){
 		IdProcess idProcess=new IdProcess();
-		int id = idProcess.getID("MaSo", "nguoidung");
+		int id = idProcess.getID("MDT", "detai");
 		System.out.println(id);
-	}
+	}*/
 }

@@ -58,7 +58,7 @@
 				<ul class="nav">
             		<li style="background-color:#99FFFF"><a href="" >Danh sách đề tài</a></li>
             		<li><a href="">Thêm đề tài thông thường</a></li>
-            		<li><a href="<%=request.getContextPath()%>/themdetai-file?type=load">Nhập file excel</a></li>
+            		<li><a href="">Nhập file excel</a></li>
             		<li><a href="">Theo dõi tiến độ</a></li>
             	</ul>
 				</div>
@@ -66,14 +66,15 @@
 			<div class="col-md-9">
 				<div class="well">
 					<h4>DANH SÁCH ĐỀ TÀI</h4>
-					<form action="<%=request.getContextPath()%>/timkiemdetai">
+					<form action="<%=request.getContextPath()%>/timkiemdetai" >
 						<div class="input-group panel panel-default">
-							<input type="text" class="form-control" name="name" placeholder="Tìm kiếm đề tài...">
-							<div class="input-group-btn">
-								<button  class="btn btn-default dropdown-toggle"  name="search" value="search" type="submit">
-									Tìm
-								</button>
-							</div>
+						<input type="text" class="form-control" name="name" placeholder="Tìm kiếm đề tài...">
+						<div class="input-group-btn">
+							<button  class="btn btn-default dropdown-toggle" type="submit" name="search" value="search">
+								Tìm
+							</button>
+							
+						</div>
 						</div>
 					</form>
 				
@@ -81,31 +82,11 @@
 				<%
 					ArrayList<DETAI> arDeTai = (ArrayList<DETAI>) request.getAttribute("arDeTai");
 					if(arDeTai == null ){
-						out.print("<span style='color:red'> Không có dữ liệu để hiển thị !</span>");
-						
+						out.print("<span style='color:red'> Không có tìm thấy dữ liệu!</span>");
 						
 					}
 					else{
-						if(request.getParameter("msg")!=null || request.getAttribute("arError") !=null){
-							String msg=request.getParameter("msg");
-							if("add".equals(msg)){
-								out.print("<span style='color:red'> Thêm thành công !</span>");
-							}else if("del".equals(msg)){
-								out.print("<span style='color:red'> Xóa thành công !</span>");
-							}else if("error".equals(msg)){
-								out.print("<span style='color:red'> Có lỗi, vui lòng thử lại !</span>");
-							}else if("edit".equals(msg)){
-								out.print("<span style='color:red'> Sửa thành công !</span>");
-							}
-							if(request.getAttribute("arError") !=null){
-								ArrayList<String> arError = (ArrayList<String>) request.getAttribute("arError");
-								out.print("<span style='color:red'> Thêm không thành công !</span><br>");
-								for(String er : arError){
-									out.print("<span style='color:red'>"+er+"</span><br>");
-								}
-							}
-						}
-	
+						out.print("<span style='color:red'>Hiển thị "+arDeTai.size()+" trên "+(Integer)request.getAttribute("numOfRecord")+" kết quả</span><br>");	
 				%>
 					<form action="">
 					<div class="panel panel-default">
@@ -142,25 +123,26 @@
 					<%
 						int currentPage = (Integer)request.getAttribute("currentPage");
 						int numOfPage= (Integer)request.getAttribute("numOfPage");
+						String name = String.valueOf(request.getAttribute("name"));
 					%>
 					<nav>
 					<ul class="pagination">
 						<%
 							if(currentPage>1){
 						%>
-						<li><a href="<%=request.getContextPath()%>/danhsachdetai?page=<%=currentPage-1%>"><</a>
+						<li><a href="<%=request.getContextPath()%>/timkiemdetai?page=<%=currentPage-1%>&search=search&name=<%=name%>"><</a>
 						<%
 							}
 							for(int p=currentPage-3;p<=currentPage+3;p++) {
 						 		if(p>0 && p <=numOfPage){
 						%>
-						<li><a href="<%=request.getContextPath()%>/danhsachdetai?page=<%=p%>" <%if(p==currentPage){%> style="color: red" <%}%>><%=p%></a></li>
+						<li><a href="<%=request.getContextPath()%>/timkiemdetai?page=<%=p%>&search=search&name=<%=name%>" <%if(p==currentPage){%> style="color: red" <%}%>><%=p%></a></li>
 						<%
 								}
 							}
 							if(currentPage<numOfPage){
 						%>
-						<li><a href="<%=request.getContextPath()%>/danhsachdetai?page=<%=currentPage+1%>">></a>
+						<li><a href="<%=request.getContextPath()%>/timkiemdetai?page=<%=currentPage+1%>&search=search&name=<%=name%>"></a>
 						<%
 							}
 						%>
