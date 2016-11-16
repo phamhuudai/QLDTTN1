@@ -4,11 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Sửa đề tài</title>
+<title>Cài đặt thời gian</title>
 <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/style.css"/>
     <script src="js/jquery-1.11.2.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="css/datepicker.css"/>
+    <script src="js/bootstrap-datepicker.js"></script>
 </head>
 <body>
 
@@ -57,6 +59,7 @@
 				<ul class="nav">
             		
             		<li ><a href="">Thống kê đăng ký</a></li>
+            		<li ><a href="">Các đợt đăng ký</a></li>
             		<li style="background-color:#99FFFF" ><a href="" >Cài đặt thời gian đăng ký</a></li>
             	</ul>
 				</div>
@@ -64,30 +67,42 @@
 			<div class="col-md-9">
 				<div class="well">
 					<h4 align="center">CÀI ĐẶT THỜI GIAN ĐĂNG KÝ</h4>
-				
-				<!-- Do du lieu tai day  -->
-					<form class="form-horizontal" action="">
-						<div class="form-group">
-                        <label class="control-label col-xs-2">Năm học </label>
-						<div class="col-md-5">
-	                  		  <select class="form-control">
-	                	 	 <option >-----------------Năm Học-----------------</option>
-					 
-						</select>
-						</div>                            
-                        </div>
-                        
+					<form class="form-horizontal" action="<%=request.getContextPath()%>/DatThoiGian">                        
                         <div class="form-group">
                         <label class="control-label col-xs-2">Thời gian BĐ </label>
 	                  	<div class="col-xs-5">
-                            <input type="text" class="form-control" name="tgBd" placeholder="Thời gian bắt đầu   dd/mm/yyyy">
+                            <div class="hero-unit">
+				                <input class="form-control" name="tgBatDau" type="text" placeholder="dd/mm/yyy"  id="tgBatDau" >
+				            </div>
+		                    <script type="text/javascript">
+					            // When the document is ready
+					            $(document).ready(function () {
+					                
+					                $('#tgBatDau').datepicker({
+					                    format: "dd/mm/yyyy"
+					                });  
+					            
+					            });
+					        </script>
                         </div>
    						</div>                            
                      
                     	<div class="form-group">
                         <label class="control-label col-xs-2">Thời gian KT </label>
 	                  	<div class="col-xs-5">
-                            <input type="text" class="form-control" name="tgBd" placeholder="Thời gian kết thúc  dd/mm/yyyy">
+                            <div class="hero-unit">
+				                <input class="form-control" name="tgKetThuc" type="text" placeholder="dd/mm/yyyy"  id="tgKetThuc" >
+				            </div>
+		                    <script type="text/javascript">
+					            // When the document is ready
+					            $(document).ready(function () {
+					                
+					                $('#tgKetThuc').datepicker({
+					                    format: "dd/mm/yyyy"
+					                });  
+					            
+					            });
+					        </script>
                         </div>
    						</div> 
 
@@ -95,21 +110,19 @@
 					<div class="form-group">
 					<label class="control-label col-md-2">Thời gian TH </label>
                     <div class="col-md-5">
-                    <select class="form-control">
+                    <select class="form-control" name="tgThucHien">
                 	  <option >--------------Chọn thời gian--------------</option>
-					  <option >3 tháng</option>
-					  <option>4 tháng</option>
-					  <option>5 tháng</option>
+					  <option value="3">3 tháng</option>
+					  <option value="4">4 tháng</option>
+					  <option value="5"> 5 tháng</option>
 					</select>
 					</div>
-                 	</div>
-             
-                 
-                 
+                 	</div>           
+	                 <button class="btn btn-default" id="DT_btnTao" type="submit" name="tao">Tạo</button>
+					<button class="btn btn-default" id="DT_btnHuy">Hủy</button>
                  </form>
                 
-				<button class="btn btn-default" id="DT_btnTao">Tạo</button>
-				<button class="btn btn-default" id="DT_btnHuy">Hủy</button>
+				
 					
 				</div>
 				</div>

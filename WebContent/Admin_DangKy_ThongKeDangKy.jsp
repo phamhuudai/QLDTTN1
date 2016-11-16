@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.bean.DANGKYDETAI"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -56,54 +58,84 @@
 				<ul class="nav">
             		
             		<li style="background-color:#99FFFF"><a href="">Thống kê đăng ký</a></li>
+            		<li ><a href="">Các đợt đăng ký</a></li>
             		<li ><a href="" >Cài đặt thời gian đăng ký</a></li>
             	</ul>
 				</div>
 			</div>
+			<%
+				ArrayList<DANGKYDETAI> arDK = (ArrayList<DANGKYDETAI>) request.getAttribute("arDK");
+			%>
 			<div class="col-md-9">
 				<div class="well">
 					<h4 align="center">DANH SÁCH SINH VIÊN ĐÃ ĐĂNG KÝ ĐỀ TÀI</h4>
 				
 				<!-- Do du lieu tai day  -->
-					<form action="">
+	
 					<div class="panel panel-default">
 						<table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>STT</th>
+                            <th>MDK</th>
                             <th>MSSV</th>
-                            <th>ĐỀ TÀI</th>
-                            <th>HÌNH THỨC</th>
+                            <th>Họ Tên</th>
+                            <th>Đề tài</th>
+                            <th>Hình thức</th>
+                            <th>Ngày Đk</th>
                           	
                         </tr>
                     </thead>
                     <tbody>
+                    <%
+                    for(DANGKYDETAI dk : arDK){
+                    %>
                     	<tr>
-                    		<td>1</td>
-                    		<td>12345</td>
-                    		<td>Đề tài 1</td>
-                    		<td>Cá nhân</td>
+                    		<td><%=dk.getMdk() %></td>
+                    		<td><%=dk.getMssv() %></td>
+                    		<td><%=dk.getTenSV() %></td>
+                    		<td><%=dk.getTenDeTai() %></td>
+                    		<td><%=dk.getHinhthuc()==1?"Nhóm":"Cá nhân"%></td>
+                    		<td><%=dk.getNgaydk() %></td>
                     		
                     	</tr>
+                    <%} %>	
                     	
                     	
                     </tbody>
                	 </table>
 					</div>		
-					</form>
+
 					
 					
 					<!-- Paging -->
-					
+					<%
+						int currentPage = (Integer)request.getAttribute("currentPage");
+						int numOfPage= (Integer)request.getAttribute("numOfPage");
+					%>
 					<nav>
-					  <ul class="pagination">
-					    <li class=""><a href="" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-					   
-			    			<li class="active"><a href=""><%=1 %> <span class="sr-only">(current)</span></a></li>			
-					    		
-					    <li><a href="" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-					  </ul>
-					</nav>		
+					<ul class="pagination">
+						<%
+							if(currentPage>1){
+						%>
+						<li><a href="<%=request.getContextPath()%>/thongkedangky?page=<%=currentPage-1%>"><</a>
+						<%
+							}
+							for(int p=currentPage-3;p<=currentPage+3;p++) {
+						 		if(p>0 && p <=numOfPage){
+						%>
+						<li><a href="<%=request.getContextPath()%>/thongkedangky?page=<%=p%>" <%if(p==currentPage){%> style="color: red" <%}%>><%=p%></a></li>
+						<%
+								}
+							}
+							if(currentPage<numOfPage){
+						%>
+						<li><a href="<%=request.getContextPath()%>/thongkedangky?page=<%=currentPage+1%>">></a>
+						<%
+							}
+						%>
+					</ul>
+					</nav>
+
 					<!-- End Paging -->
 						<button class="btn btn-default" id="dsbv" name="dsbv">Danh SV chưa đăng ký </button>	
 				</div>

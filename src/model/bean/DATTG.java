@@ -1,36 +1,43 @@
 package model.bean;
 
+import java.util.Date;
+
 public class DATTG {
-	private String madot;
-	private String tendot;
-	private String thoigiandot;
-	public DATTG(String madot, String tendot, String thoigiandot) {
+	private int maDot;
+	private Date thoiGianBD;
+	private Date thoiGianKT;
+	private int thoiGianTH;
+	public int getMaDot() {
+		return maDot;
+	}
+	public void setMaDot(int maDot) {
+		this.maDot = maDot;
+	}
+	public Date getThoiGianBD() {
+		return thoiGianBD;
+	}
+	public void setThoiGianBD(Date thoiGianBD) {
+		this.thoiGianBD = thoiGianBD;
+	}
+	public Date getThoiGianKT() {
+		return thoiGianKT;
+	}
+	public void setThoiGianKT(Date thoiGianKT) {
+		this.thoiGianKT = thoiGianKT;
+	}
+	public int getThoiGianTH() {
+		return thoiGianTH;
+	}
+	public void setThoiGianTH(int thoiGianTH) {
+		this.thoiGianTH = thoiGianTH;
+	}
+	public DATTG(int maDot, Date thoiGianBD, Date thoiGianKT, int thoiGianTH) {
 		super();
-		this.madot = madot;
-		this.tendot = tendot;
-		this.thoigiandot = thoigiandot;
+		this.maDot = maDot;
+		this.thoiGianBD = thoiGianBD;
+		this.thoiGianKT = thoiGianKT;
+		this.thoiGianTH = thoiGianTH;
 	}
-	public DATTG() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public String getMadot() {
-		return madot;
-	}
-	public void setMadot(String madot) {
-		this.madot = madot;
-	}
-	public String getTendot() {
-		return tendot;
-	}
-	public void setTendot(String tendot) {
-		this.tendot = tendot;
-	}
-	public String getThoigiandot() {
-		return thoigiandot;
-	}
-	public void setThoigiandot(String thoigiandot) {
-		this.thoigiandot = thoigiandot;
-	}
+	
 	
 }

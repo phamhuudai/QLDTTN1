@@ -1,62 +1,70 @@
 package model.bean;
 
+import java.util.Date;
+
 public class DANGKYDETAI {
-	private String mdk;
-	private String mdt;
-	private boolean hinhthuc;
-	private String mssv1;
-	private String mssv2;
-	private String ngaydk;
-	public DANGKYDETAI() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public DANGKYDETAI(String mdk, String mdt, boolean hinhthuc, String mssv1,
-			String mssv2, String ngaydk) {
-		super();
-		this.mdk = mdk;
-		this.mdt = mdt;
-		this.hinhthuc = hinhthuc;
-		this.mssv1 = mssv1;
-		this.mssv2 = mssv2;
-		this.ngaydk = ngaydk;
-	}
-	public String getMdk() {
+	private int mdk;
+	private int mdt;
+	private int hinhthuc;
+	private int mssv;
+	private Date ngaydk;
+	private String tenSV;
+	private String tenDeTai;
+	public int getMdk() {
 		return mdk;
 	}
-	public void setMdk(String mdk) {
+	public void setMdk(int mdk) {
 		this.mdk = mdk;
 	}
-	public String getMdt() {
+	public int getMdt() {
 		return mdt;
 	}
-	public void setMdt(String mdt) {
+	public void setMdt(int mdt) {
 		this.mdt = mdt;
 	}
-	public boolean isHinhthuc() {
+	public int getHinhthuc() {
 		return hinhthuc;
 	}
-	public void setHinhthuc(boolean hinhthuc) {
+	public void setHinhthuc(int hinhthuc) {
 		this.hinhthuc = hinhthuc;
 	}
-	public String getMssv1() {
-		return mssv1;
+	public int getMssv() {
+		return mssv;
 	}
-	public void setMssv1(String mssv1) {
-		this.mssv1 = mssv1;
+	public void setMssv(int mssv) {
+		this.mssv = mssv;
 	}
-	public String getMssv2() {
-		return mssv2;
-	}
-	public void setMssv2(String mssv2) {
-		this.mssv2 = mssv2;
-	}
-	public String getNgaydk() {
+	public Date getNgaydk() {
 		return ngaydk;
 	}
-	public void setNgaydk(String ngaydk) {
+	public void setNgaydk(Date ngaydk) {
 		this.ngaydk = ngaydk;
 	}
+	public String getTenSV() {
+		return tenSV;
+	}
+	public void setTenSV(String tenSV) {
+		this.tenSV = tenSV;
+	}
+	public String getTenDeTai() {
+		return tenDeTai;
+	}
+	public void setTenDeTai(String tenDeTai) {
+		this.tenDeTai = tenDeTai;
+	}
+	public DANGKYDETAI(int mdk, int mdt, int hinhthuc, int mssv,
+			Date ngaydk, String tenSV, String tenDeTai) {
+		super();
+		this.mdk = mdk;
+		this.mdt = mdt;
+		this.hinhthuc = hinhthuc;
+		this.mssv = mssv;
+		this.ngaydk = ngaydk;
+		this.tenSV = tenSV;
+		this.tenDeTai = tenDeTai;
+	}
+	
+	
 	
 }
 

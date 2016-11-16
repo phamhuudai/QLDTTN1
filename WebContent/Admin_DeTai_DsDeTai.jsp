@@ -167,7 +167,7 @@
 					</ul>
 					</nav>	
 					<!-- End Paging -->
-						<button class="btn btn-default" id="xuatDt">Xuất DS Excel </button>	
+						<a class="btn btn-default" id="xuatDt" href="<%=request.getContextPath()%>/taivedanhsach">Xuất DS Excel </a>	
 				<%} %>	
 				</div>
 				</div>

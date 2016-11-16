@@ -14,5 +14,11 @@ public class DanhSachQuanLyBO {
 	public ArrayList<DANHSACHQL> getList(int maGV){
 		return dsDAO.getList(maGV);
 	}
+	public ArrayList<DANHSACHQL> getListSinhVien(int maGV){
+		return dsDAO.getListSinhVien(maGV);
+	}
+	public ArrayList<DANHSACHQL> TimSinhVien(int maGV, String ten){
+		return dsDAO.TimSinhVien(maGV, ten);
+	}
 
 }

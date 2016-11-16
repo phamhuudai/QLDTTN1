@@ -27,12 +27,12 @@ public class DanhSachQLDAO {
 				"INNER JOIN sinhvien as sv on sv.MSSV=dk.MSSV1 or sv.MSSV = dk.MSSV2 "+
 				"INNER JOIN chuyennganh as cn on sv.MaCN=cn.MaCN "+
 				"INNER JOIN lop on sv.MaLop = lop.MaLop where dt.MaGVHD=?";
-//		System.out.println(sql);
+
 		try {
 			pst=conn.prepareStatement(sql);
 			pst.setInt(1, maGV);
 			rs=pst.executeQuery();
-			if(rs.next()){
+			while(rs.next()){
 				String tenSV=rs.getString("HoTen");
 				int maSV=rs.getInt("MSSV");
 				String lop=rs.getString("TenLop");
@@ -41,7 +41,7 @@ public class DanhSachQLDAO {
 				String tenCN=rs.getString("TenCN");
 				String tenDT=rs.getString("TenDeTai");
 				DANHSACHQL ds = new DANHSACHQL(tenSV, maSV, lop, email, sdt, tenCN, tenDT);
-				/*System.out.println(ds);*/
+				
 				arQL.add(ds);
 			}
 		} catch (SQLException e) {
@@ -54,5 +54,65 @@ public class DanhSachQLDAO {
 		DanhSachQLDAO ds = new DanhSachQLDAO();
 		System.out.println(ds.getList(200004));
 	}*/
+	
+	public ArrayList<DANHSACHQL> getListSinhVien(int maGV){
+		ArrayList<DANHSACHQL> arQL=new ArrayList<DANHSACHQL>();
+		conn=c.getConnectSqlServer();
+		String sql="SELECT sv.HoTen,sv.MSSV, lop.TenLop, sv.Email, sv.SDT  from detai as dt "
+				+ "INNER JOIN dangkidetai as dk on dt.MDT =dk.MDT "
+				+ "INNER JOIN sinhvien as sv on sv.MSSV=dk.MSSV1 or sv.MSSV = dk.MSSV2 "
+				+ "INNER JOIN lop on sv.MaLop = lop.MaLop where dt.MaGVHD=?";
+
+		try {
+			pst=conn.prepareStatement(sql);
+			pst.setInt(1, maGV);
+			rs=pst.executeQuery();
+			while(rs.next()){
+				String tenSV=rs.getString("HoTen");
+				int maSV=rs.getInt("MSSV");
+				String lop=rs.getString("TenLop");
+				String email=rs.getString("Email");
+				String sdt=rs.getString("SDT");
+				DANHSACHQL ds = new DANHSACHQL(tenSV, maSV, lop, email, sdt, "", "");
+				
+				arQL.add(ds);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return arQL;
+	}
+	
+	
+	public ArrayList<DANHSACHQL> TimSinhVien(int maGV, String ten){
+		ArrayList<DANHSACHQL> arQL=new ArrayList<DANHSACHQL>();
+		conn=c.getConnectSqlServer();
+		String sql="SELECT sv.HoTen,sv.MSSV, lop.TenLop, sv.Email, sv.SDT  from detai as dt "
+				+ "INNER JOIN dangkidetai as dk on dt.MDT =dk.MDT "
+				+ "INNER JOIN sinhvien as sv on sv.MSSV=dk.MSSV1 or sv.MSSV = dk.MSSV2 "
+				+ "INNER JOIN lop on sv.MaLop = lop.MaLop where dt.MaGVHD=? and sv.HoTen like N'%"+ten+"%'";
+
+		try {
+			pst=conn.prepareStatement(sql);
+			pst.setInt(1, maGV);
+			rs=pst.executeQuery();
+			while(rs.next()){
+				String tenSV=rs.getString("HoTen");
+				int maSV=rs.getInt("MSSV");
+				String lop=rs.getString("TenLop");
+				String email=rs.getString("Email");
+				String sdt=rs.getString("SDT");
+				DANHSACHQL ds = new DANHSACHQL(tenSV, maSV, lop, email, sdt, "", "");
+				
+				arQL.add(ds);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return arQL;
+	}
+	
 
 }

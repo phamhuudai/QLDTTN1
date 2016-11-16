@@ -1,3 +1,5 @@
+<%@page import="model.bean.DANHSACHQL"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,6 +11,20 @@
     <link rel="stylesheet" href="css/style.css"/>
     <script src="js/jquery-1.11.2.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+	$(document).ready(function() {
+		$("#btn-tim").click(function() {
+			var name = $("#ip-tim").val();
+			if (name == "") {
+				alert("Vui lòng nhập nội dung tìm kiếm !");
+				
+			} else {
+				$("#formtk").submit();
+			}
+		});
+
+	});
+</script>
 </head>
 <body>
 	<div class="container">
@@ -48,19 +64,30 @@
 	</div><!-- container -menu -->
 	<div class="container">
 		<div class="row">
+		
 
 			<div class="col-md-12">
 				<div class="well">
+				<%
+					ArrayList<DANHSACHQL> arSV = (ArrayList<DANHSACHQL>)request.getAttribute("arSV");
+				if(arSV ==null ){
+					
+				}else{
+					
+				
+				%>
 				
 					<h4>DANH SÁCH SINH VIÊN QUẢN LÝ</h4>
-					<div class="input-group panel panel-default">
-					<input type="text" class="form-control" placeholder="Tìm kiếm...">
+				<form action="<%=request.getContextPath()%>/TimSinhVien" method="GET" id="formtk">
+						<div class="input-group panel panel-default">
+					<input type="text" name="ten" class="form-control" id="ip-tim" placeholder="Tìm kiếm...">
 					<div class="input-group-btn">
-						<button type="button" class="btn btn-default">
+						<button type="button" type="submit" id="btn-tim" class="btn btn-default">
 							Tìm
 						</button>
 					</div>
-				</div>
+					</div>
+				</form>
 				
 				<!-- Do du lieu tai day  -->
 				
@@ -69,7 +96,7 @@
 						<table class="table table-bordered">
 		                    <thead>
 		                        <tr>
-		                            <th>STT</th>
+		                          
 		                            <th>MSSV</th>
 		                            <th>Tên sinh viên</th>
 		                            <th>Lớp</th>
@@ -78,14 +105,16 @@
 		                        </tr>
 		                    </thead>
 		                    <tbody>
+		                    <%for(DANHSACHQL ds : arSV){ %>
 		                    	<tr>
-		                    		<td>1</td>
-		                    		<td>012345678</td>
-		                    		<td>Phạm Thị Duyên</td>
-		                    		<td>12T4</td> 
-		                    		<td>phamduyen@gmail.com</td>     
-		                    		<td>Số điện thoạis</td>                		
-		                    	</tr>                   	
+		                    		
+		                    		<td><%=ds.getMaSV() %></td>
+		                    		<td><%=ds.getTenSV() %></td>
+		                    		<td><%=ds.getLop() %></td> 
+		                    		<td><%=ds.getEmail()%></td>     
+		                    		<td><%=ds.getSdt() %></td>                		
+		                    	</tr>
+		                    <%} %>                   	
 		                    </tbody>
                	 		</table>
 					</div>		
@@ -101,7 +130,8 @@
 				</nav>		
 					<!-- End Paging -->	
 				</div>
-			</div>		
+			</div>
+			<%} %>		
 		</div>		
 	</div><!-- Container- conten  -->	
 </body>

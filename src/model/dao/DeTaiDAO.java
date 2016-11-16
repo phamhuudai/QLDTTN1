@@ -175,7 +175,7 @@ public class DeTaiDAO {
 		int offset=(page-1)*numOfRecords+1;
 		ArrayList<DETAI> arDeTai = new ArrayList<DETAI>();
 		conn=c.getConnectSqlServer();
-		String sql="SELECT detai.MDT, detai.TenDeTai, deTai.MaCN, detai.ThongTinNoiDung, detai.MaGVHD, chuyennganh.TenCN, DETAI.HoTen from (select *, ROW_NUMBER() OVER (order by MDT DESC) as RN from detai) detai   INNER JOIN chuyennganh on detai.MaCN = chuyennganh.MaCN INNER JOIN DETAI on detai.MaGVHD = DETAI.MaGVHD"// get RN: row number
+		String sql="SELECT detai.MDT, detai.TenDeTai, deTai.MaCN, detai.ThongTinNoiDung, detai.MaGVHD, chuyennganh.TenCN, giaovien.HoTen from (select *, ROW_NUMBER() OVER (order by MDT DESC) as RN from detai) detai   INNER JOIN chuyennganh on detai.MaCN = chuyennganh.MaCN INNER JOIN giaovien on giaovien.MaGVHD = detai.MaGVHD"// get RN: row number
 				+ " where RN BETWEEN "+offset+" AND "+(numOfRecords+offset-1);		
 
 		try {

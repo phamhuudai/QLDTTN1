@@ -1,8 +1,12 @@
 package controller;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.TreeMap;
@@ -47,47 +51,73 @@ public class ControllerOutputExcelDeTai extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-				DeTaiBO dtBO = new DeTaiBO();
-				ArrayList<DETAI> arDT = dtBO.getList();
-				XSSFWorkbook workbook = new XSSFWorkbook(); 				
-				//Create a blank sheet
-				XSSFSheet sheet = workbook.createSheet("De Tai");				 
-				//This data needs to be written (Object[])
-				TreeMap<String, Object[]> data = new TreeMap<String, Object[]>();
-				data.put("1", new Object[] {"MDT", "Ten DT", "MaCN","NoiDung","GVHD"});
-				int i=2;
-				for(DETAI ObjDT : arDT){
-					data.put(i+"", new Object[]{ObjDT.getMadetai(),ObjDT.getTendetai(),ObjDT.getMacn(),ObjDT.getThongtinnoidung(),ObjDT.getMagvhd()});
-					i++;
-				}				 
-				//Iterate over data and write to sheet
-				Set<String> keyset = data.keySet();
-				int rownum = 0;
-				for (String key : keyset)
-				{
-				    Row row = sheet.createRow(rownum++);
-				    Object [] objArr = data.get(key);
-				    int cellnum = 0;
-				    for (Object obj : objArr)
-				    {
-				       Cell cell = row.createCell(cellnum++);
-				       if(obj instanceof String)
-				            cell.setCellValue((String)obj);
-				        else if(obj instanceof Integer)
-				            cell.setCellValue((Integer)obj);
-				    }
-				}
-				try 
-				{
-					//Write the workbook in file system
-				    FileOutputStream out = new FileOutputStream(new File("howtodoinjava_demo.xlsx"));
-				    workbook.write(out);
-				    out.close();				    
-				    System.out.println("howtodoinjava_demo.xlsx written successfully on disk.");				     
-				} 
-				catch (Exception e) 
-				{
-				    e.printStackTrace();
-				}
+		XSSFWorkbook workbook = new XSSFWorkbook(); 
+		
+		//Create a blank sheet
+		XSSFSheet sheet = workbook.createSheet("DeTai");
+		sheet.setColumnWidth(0, 5000);
+		sheet.setColumnWidth(1, 10000);
+		sheet.setColumnWidth(2, 5000);
+		sheet.setColumnWidth(3, 10000);
+		sheet.setColumnWidth(4, 5000);
+		 
+		 
+		//Iterate over data and write to sheet
+		DeTaiBO dtBO = new DeTaiBO();
+		ArrayList<DETAI> arDT = dtBO.getList(); 		
+		int rownum = 1;
+		
+		//create name of collumn
+			Row rowTitle = sheet.createRow(rownum++);
+			Cell cellMaDT_t = rowTitle.createCell(0);
+			
+		    cellMaDT_t.setCellValue("Mã đề tài");
+		    
+		    Cell cellTenDT_t = rowTitle.createCell(1);
+		    cellTenDT_t.setCellValue("Tên đề tài");
+		  
+		    Cell cellMaCN_t = rowTitle.createCell(2);
+		    cellMaCN_t.setCellValue("Mã chuyên ngành");
+		    
+		    Cell cellNoiDung_t = rowTitle.createCell(3);
+		    cellNoiDung_t.setCellValue("Nội dung");
+
+		    Cell cellMaGVHD_t = rowTitle.createCell(4);
+		    cellMaGVHD_t.setCellValue("Mã GVHD");
+		
+		
+		for (DETAI objDT : arDT)
+		{	
+			
+		    Row row = sheet.createRow(rownum++);
+		    			   
+		    Cell cellMaDT = row.createCell(0);
+		    cellMaDT.setCellValue(objDT.getMadetai());
+		    
+		    Cell cellTenDT = row.createCell(1);
+		    cellTenDT.setCellValue(objDT.getTendetai());
+		  
+		    Cell cellMaCN = row.createCell(2);
+		    cellMaCN.setCellValue(objDT.getMacn());
+		    
+		    Cell cellNoiDung = row.createCell(3);
+		    cellNoiDung.setCellValue(objDT.getThongtinnoidung());
+
+		    Cell cellMaGVHD = row.createCell(4);
+		    cellMaGVHD.setCellValue(objDT.getMagvhd());
+		    
+		}
+
+		
+		ByteArrayOutputStream outByteStream = new ByteArrayOutputStream();
+		workbook.write(outByteStream);
+		byte [] outArray = outByteStream.toByteArray();
+		response.setContentType("application/ms-excel");
+		response.setContentLength(outArray.length);
+		response.setHeader("Expires:", "0"); // eliminates browser caching
+		response.setHeader("Content-Disposition", "attachment; filename=danhsachdetai.xlsx");
+		OutputStream outStream = response.getOutputStream();
+		outStream.write(outArray);
+		outStream.flush();
 	}
 }

@@ -172,7 +172,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ControllerTheoDoiTienDo</servlet-name>
-    <url-pattern>/ControllerTheoDoiTienDo</url-pattern>
+    <url-pattern>/theodoitiendo</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -202,6 +202,66 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ControllerOutputExcelDeTai</servlet-name>
-    <url-pattern>/ControllerOutputExcelDeTai</url-pattern>
+    <url-pattern>/taivedanhsach</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ControllerThongKeDangKy</display-name>
+    <servlet-name>ControllerThongKeDangKy</servlet-name>
+    <servlet-class>controller.ControllerThongKeDangKy</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerThongKeDangKy</servlet-name>
+    <url-pattern>/thongkedangky</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ControllerDotDK</display-name>
+    <servlet-name>ControllerDotDK</servlet-name>
+    <servlet-class>controller.ControllerDotDK</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerDotDK</servlet-name>
+    <url-pattern>/CacDotDK</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ControllerDatThoiGian</display-name>
+    <servlet-name>ControllerDatThoiGian</servlet-name>
+    <servlet-class>controller.ControllerDatThoiGian</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerDatThoiGian</servlet-name>
+    <url-pattern>/DatThoiGian</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ControllerXoaThoiGian</display-name>
+    <servlet-name>ControllerXoaThoiGian</servlet-name>
+    <servlet-class>controller.ControllerXoaThoiGian</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerXoaThoiGian</servlet-name>
+    <url-pattern>/XoaDangKy</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Controller_GV_DanhSachSV</display-name>
+    <servlet-name>Controller_GV_DanhSachSV</servlet-name>
+    <servlet-class>controller.Controller_GV_DanhSachSV</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Controller_GV_DanhSachSV</servlet-name>
+    <url-pattern>/DanhSachSinhVien</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Controller_GV_TimSV</display-name>
+    <servlet-name>Controller_GV_TimSV</servlet-name>
+    <servlet-class>controller.Controller_GV_TimSV</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Controller_GV_TimSV</servlet-name>
+    <url-pattern>/TimSinhVien</url-pattern>
   </servlet-mapping>
 </web-app>
