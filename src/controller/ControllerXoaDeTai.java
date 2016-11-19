@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import common.LibraryPer;
+
 import model.bo.DeTaiBO;
 import model.bo.GiaoVienBO;
 import model.bo.NguoiDungBO;
@@ -39,6 +41,9 @@ public class ControllerXoaDeTai extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		if(! LibraryPer.isAdmin(request, response)){
+			return;
+		}
 		int maDeTai =Integer.parseInt(request.getParameter("maDeTai"));
 		System.out.println(maDeTai);
 		DeTaiBO dtBO = new DeTaiBO();

@@ -5,10 +5,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import common.LibraryPer;
 
 import model.bean.DATTG;
 import model.bo.DatTGBO;
@@ -41,8 +44,13 @@ public class ControllerDatThoiGian extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		if(! LibraryPer.isAdmin(request, response)){
+			return;
+		}
 		if(request.getParameter("tao") == null){
-			response.sendRedirect(request.getContextPath()+"/Admin_DangKy_CaiDatTG.jsp");
+			
+			RequestDispatcher rd = request.getRequestDispatcher("Admin_DangKy_CaiDatTG.jsp");
+			rd.forward(request, response);
 		}else{
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			DatTGBO tgBO = new DatTGBO();

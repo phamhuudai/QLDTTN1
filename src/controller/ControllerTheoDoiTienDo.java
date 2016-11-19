@@ -14,6 +14,7 @@ import model.bean.TIENDO;
 import model.bo.GiaoVienBO;
 import model.bo.TienDoBO;
 import common.LibraryConst;
+import common.LibraryPer;
 
 /**
  * Servlet implementation class ControllerTheoDoiTienDo
@@ -42,6 +43,9 @@ public class ControllerTheoDoiTienDo extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		if(! LibraryPer.isAdmin(request, response)){
+			return;
+		}
 		TienDoBO tdBO = new TienDoBO();
 		int currentPage=1;
 		if(request.getParameter("page")!=null){

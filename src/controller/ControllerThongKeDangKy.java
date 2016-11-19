@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.bean.DANGKYDETAI;
 import model.bo.DangKyBO;
-
 import common.LibraryConst;
+import common.LibraryPer;
 
 /**
  * Servlet implementation class ControllerThongKeDangKy
@@ -41,6 +41,9 @@ public class ControllerThongKeDangKy extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		if(! LibraryPer.isAdmin(request, response)){
+			return;
+		}
 		DangKyBO dkBO = new DangKyBO();
 		int currentPage=1;
 		if(request.getParameter("page")!=null){

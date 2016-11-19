@@ -65,7 +65,8 @@ public class ControllerLogin extends HttpServlet {
 			}
 			
 		}else{
-			response.sendRedirect(request.getContextPath()+"/HomePage.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("HomePage.jsp");
+			rd.forward(request, response);
 		}
 	}
 

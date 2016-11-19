@@ -58,9 +58,9 @@ public class ControllerThemDTFile extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		/*if(! LibraryPer.isAdmin(request, response)){
+		if(! LibraryPer.isAdmin(request, response)){
 			return;
-		}*/
+		}
 		if("load".equals(request.getParameter("type"))){
 			
 			RequestDispatcher rd =request.getRequestDispatcher("Admin_DeTai_NhapTuFile.jsp");

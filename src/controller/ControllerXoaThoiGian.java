@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import common.LibraryPer;
+
 import model.bo.DatTGBO;
 import model.bo.DeTaiBO;
 
@@ -37,6 +39,9 @@ public class ControllerXoaThoiGian extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		if(! LibraryPer.isAdmin(request, response)){
+			return;
+		}
 		int maDot =Integer.parseInt(request.getParameter("id"));
 		DatTGBO tgBO = new DatTGBO();
 		if(tgBO.deleteData(maDot)){

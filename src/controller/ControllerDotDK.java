@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import common.LibraryPer;
+
 import model.bo.DatTGBO;
 
 /**
@@ -37,6 +39,9 @@ public class ControllerDotDK extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		if(! LibraryPer.isAdmin(request, response)){
+			return;
+		}
 		DatTGBO tgBO = new DatTGBO();
 		request.setAttribute("arTG", tgBO.getList());
 		RequestDispatcher rd = request.getRequestDispatcher("Admin_DangKy_DotDK.jsp");
