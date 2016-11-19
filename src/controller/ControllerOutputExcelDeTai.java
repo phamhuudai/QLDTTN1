@@ -24,6 +24,8 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import common.LibraryPer;
+
 /**
  * Servlet implementation class ControllerOutputExcelDeTai
  */
@@ -51,6 +53,9 @@ public class ControllerOutputExcelDeTai extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		if(! LibraryPer.isAdmin(request, response)){
+			return;
+		}
 		XSSFWorkbook workbook = new XSSFWorkbook(); 
 		
 		//Create a blank sheet

@@ -45,9 +45,9 @@ public class ControllerDSDT extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		/*if(! LibraryPer.isAdmin(request, response)){
+		if(! LibraryPer.isAdmin(request, response)){
 			return;
-		}*/
+		}
 		DeTaiBO deTaiBO = new DeTaiBO();
 		int currentPage=1;
 		if(request.getParameter("page")!=null){

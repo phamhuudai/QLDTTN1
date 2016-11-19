@@ -28,25 +28,17 @@
 					<li ><a href="#" >THÔNG BÁO</a></li>
 					<li ><a href="#">SINH VIÊN</a></li>
 					<li ><a href="<%=request.getContextPath()%>/danhsachgv">GIÁO VIÊN</a></li>
-					<li ><a href="#">ĐỀ TÀI</a></li>
-					<li ><a href="#">ĐĂNG KÍ</a></li>
-					<script>
-					$('.navbar li').click(function(e) {
-					    $('.navbar li.active').removeClass('active');
-					    var $this = $(this);
-					    if (!$this.hasClass('active')) {
-					        $this.addClass('active');
-					    }
-					    e.preventDefault();
-					});
-					</script>
+					<li ><a href="<%=request.getContextPath()%>/danhsachdetai">ĐỀ TÀI</a></li>
+					<li ><a href="<%=request.getContextPath()%>/thongkedangky">ĐĂNG KÍ</a></li>
+					
 				</ul>
+								
 				<ul class="nav navbar-nav navbar-right">
 					<li><p style="margin-top: 15px; color: white">
 							<span class="glyphicon glyphicon-user"></span>: Admin
 						</p></li>
 					<!-- xuất thông tin người dung ở chỗ nay-->
-					<li><a href="" action="#"> |Đăng xuất</a></li>
+					<li><a href="<%=request.getContextPath()%>/logout"> |Đăng xuất</a></li>
 				</ul>
 			</div>
 			</nav>

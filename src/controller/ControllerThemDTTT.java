@@ -51,9 +51,9 @@ public class ControllerThemDTTT extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		/*if(! LibraryPer.isAdmin(request, response)){
+		if(! LibraryPer.isAdmin(request, response)){
 			return;
-		}*/
+		}
 		if(request.getParameter("them")==null){
 //			response.sendRedirect(request.getContextPath()+"/Admin_DeTai_ThongThuong.jsp");
 			ChuyenNhanhBO cnBO = new ChuyenNhanhBO();
