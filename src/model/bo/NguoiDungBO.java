@@ -15,4 +15,6 @@ public class NguoiDungBO {
 	public boolean delData(int id){
 		return ndDAO.delData(id);
 	}
+	
+	
 }

@@ -8,9 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.bean.NGUOIDUNG;
+import model.bo.SinhVienBO;
 
 
 public class LibraryPer {
+	
 	public static boolean isAdmin(HttpServletRequest request, HttpServletResponse response){
 		HttpSession session = request.getSession();
 		NGUOIDUNG sObjND = (NGUOIDUNG)session.getAttribute("sObjND");
@@ -63,7 +65,7 @@ public class LibraryPer {
 	}
 	public static boolean isStudent(HttpServletRequest request, HttpServletResponse response){
 		HttpSession session = request.getSession();
-		NGUOIDUNG sObjND = (NGUOIDUNG)session.getAttribute("sObjND");
+		NGUOIDUNG sObjND = (NGUOIDUNG)session.getAttribute("sObjND");		
 		if(sObjND==null){			
 			try {
 				response.sendRedirect(request.getContextPath()+"/HomePage.jsp");

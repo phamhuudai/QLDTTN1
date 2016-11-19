@@ -1,35 +1,70 @@
 package model.bean;
 
+import java.util.Date;
+
 public class SINHVIEN {
-	private String mssv;
-	private String hoten;
-	private String ngaysinh;
-	private String malop;
-	private String macn;
-	private String email;
-	private String sdt;
-	private String lop;
-	private String chuyenNganh;
+	private int mssv;
+	private String hoTen;
+	private Date ngaySinh;
+	private int maLop;
+	private int maCN;
 	
-	public SINHVIEN(String mssv, String hoten, String ngaysinh, String malop,
-			String macn, String email, String sdt, String lop,
-			String chuyenNganh) {
+	private String tenLop;
+	private String chuyenNganh;
+	private String diaChi;
+	
+	public String getDiaChi() {
+		return diaChi;
+	}
+
+	public void setDiaChi(String diaChi) {
+		this.diaChi = diaChi;
+	}
+
+	
+
+	public SINHVIEN(int mssv, String diaChi, String email, String sdt) {
 		super();
 		this.mssv = mssv;
-		this.hoten = hoten;
-		this.ngaysinh = ngaysinh;
-		this.malop = malop;
-		this.macn = macn;
+		this.diaChi = diaChi;
 		this.email = email;
 		this.sdt = sdt;
-		this.lop = lop;
+	}
+
+	
+	public SINHVIEN(int mssv, String hoTen, Date ngaySinh, int maLop, int maCN,
+			String tenLop, String chuyenNganh, String diaChi, String email,
+			String sdt) {
+		super();
+		this.mssv = mssv;
+		this.hoTen = hoTen;
+		this.ngaySinh = ngaySinh;
+		this.maLop = maLop;
+		this.maCN = maCN;
+		this.tenLop = tenLop;
 		this.chuyenNganh = chuyenNganh;
+		this.diaChi = diaChi;
+		this.email = email;
+		this.sdt = sdt;
 	}
-	public String getLop() {
-		return lop;
+
+	public SINHVIEN(int mssv, String hoTen, Date ngaySinh, String tenLop,
+			String chuyenNganh, String email, String sdt) {
+		super();
+		this.mssv = mssv;
+		this.hoTen = hoTen;
+		this.ngaySinh = ngaySinh;
+		this.tenLop = tenLop;
+		this.chuyenNganh = chuyenNganh;
+		this.email = email;
+		this.sdt = sdt;
 	}
-	public void setLop(String lop) {
-		this.lop = lop;
+	
+	public String getTenLop() {
+		return tenLop;
+	}
+	public void setTenLop(String tenLop) {
+		this.tenLop = tenLop;
 	}
 	public String getChuyenNganh() {
 		return chuyenNganh;
@@ -37,50 +72,37 @@ public class SINHVIEN {
 	public void setChuyenNganh(String chuyenNganh) {
 		this.chuyenNganh = chuyenNganh;
 	}
-	public SINHVIEN(String mssv, String hoten, String ngaysinh, String malop,
-			String macn, String email, String sdt) {
-		super();
-		this.mssv = mssv;
-		this.hoten = hoten;
-		this.ngaysinh = ngaysinh;
-		this.malop = malop;
-		this.macn = macn;
-		this.email = email;
-		this.sdt = sdt;
-	}
-	public SINHVIEN() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public String getMssv() {
+	private String email;
+	private String sdt;
+	public int getMssv() {
 		return mssv;
 	}
-	public void setMssv(String mssv) {
+	public void setMssv(int mssv) {
 		this.mssv = mssv;
 	}
-	public String getHoten() {
-		return hoten;
+	public String getHoTen() {
+		return hoTen;
 	}
-	public void setHoten(String hoten) {
-		this.hoten = hoten;
+	public void setHoTen(String hoTen) {
+		this.hoTen = hoTen;
 	}
-	public String getNgaysinh() {
-		return ngaysinh;
+	public Date getNgaySinh() {
+		return ngaySinh;
 	}
-	public void setNgaysinh(String ngaysinh) {
-		this.ngaysinh = ngaysinh;
+	public void setNgaySinh(Date ngaySinh) {
+		this.ngaySinh = ngaySinh;
 	}
-	public String getMalop() {
-		return malop;
+	public int getMaLop() {
+		return maLop;
 	}
-	public void setMalop(String malop) {
-		this.malop = malop;
+	public void setMaLop(int maLop) {
+		this.maLop = maLop;
 	}
-	public String getMacn() {
-		return macn;
+	public int getMaCN() {
+		return maCN;
 	}
-	public void setMacn(String macn) {
-		this.macn = macn;
+	public void setMaCN(int maCN) {
+		this.maCN = maCN;
 	}
 	public String getEmail() {
 		return email;
@@ -94,5 +116,17 @@ public class SINHVIEN {
 	public void setSdt(String sdt) {
 		this.sdt = sdt;
 	}
+	public SINHVIEN(int mssv, String hoTen, Date ngaySinh, int maLop,
+			int maCN, String email, String sdt) {
+		super();
+		this.mssv = mssv;
+		this.hoTen = hoTen;
+		this.ngaySinh = ngaySinh;
+		this.maLop = maLop;
+		this.maCN = maCN;
+		this.email = email;
+		this.sdt = sdt;
+	}
+	
 	
 }

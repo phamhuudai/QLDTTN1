@@ -8,16 +8,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.bean.DIEMBAOVE;
+import model.bean.SINHVIEN;
+import model.bean.SINHVIENDANGKYDETAI;
+import model.bo.SinhVienDangKyDeTaiBO;
+
 /**
- * Servlet implementation class ControllerLogout
+ * Servlet implementation class ControllerXemDiemBaoVeDoAn
  */
-public class ControllerLogout extends HttpServlet {
+public class ControllerXemDiemBaoVeDoAn extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ControllerLogout() {
+    public ControllerXemDiemBaoVeDoAn() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,20 +31,23 @@ public class ControllerLogout extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doPost(request, response);
+		this.doPost(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		SinhVienDangKyDeTaiBO svdkdtBO = new SinhVienDangKyDeTaiBO();
+		
 		HttpSession session = request.getSession();
-		session.removeAttribute("sObjND");
-		session.removeAttribute("ObjSV");
-		response.sendRedirect(request.getContextPath()+"/login");
-		return;
+		SINHVIEN ObjSV = (SINHVIEN)session.getAttribute("ObjSV");
+		int mssv1 = ObjSV.getMssv();
+		//System.out.println("mssv1: "+mssv1);		
+		SINHVIENDANGKYDETAI objDeTaiSV = svdkdtBO.getObjDeTaiSV(mssv1);
+		//DIEMBAOVE objDiemBV = 
+		System.out.println("Tên đề tài: "+objDeTaiSV.getMDK());
+		request.getRequestDispatcher("SV_XemDiemBV.jsp").forward(request, response);
 	}
 
 }

@@ -34,44 +34,41 @@
 </div><!-- container1 -->
 <div class="container">
 	<div class="link">
-				<nav class="navbar navbar-inverse">
-				  <div class="container-fluid">
-				    <div class="navbar-header">
-				      <a class="navbar-brand" href="#">ADMIN</a>
-				    </div>
-				    <ul class="nav navbar-nav">
-				       <li><a href="#">THÔNG BÁO</a></li>					      
-				         <li ><a href="#">ĐỀ TÀI</a></li> 
-				      <li  ><a href="#">CẬP NHẬT CÁ NHÂN</a></li>					     
-				      <li class="active"><a href="#">KẾT QUẢ</a></li>
-				    </ul>
-				    <ul class="nav navbar-nav navbar-right">
-				    	<li><p style="margin-top:15px;color:white"><span class="glyphicon glyphicon-user"></span>SV: Huỳnh Hữu Hưng</p></li><!-- xuất thông tin người dung ở chỗ nay-->
-				      	<li><a href="" action = "#"> |Đăng xuất</a></li>
-				    </ul>
-				  </div>
+			<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<nav id="primary_nav_wrap">
+				<ul class="nav navbar-nav">
+					<li class="primary_nav_wrap"><a href="#">THÔNG BÁO</a></li>
+					<li class="active"><a href="<%=request.getContextPath()%>/sinhvien_xemdetai">ĐỀ TÀI</a>
+						<ul>
+							<li><a href="#">Đề tài đã đăng ký</a></li>
+						</ul></li>
+					<li><a
+						href="<%=request.getContextPath()%>/ControllerHienThiThongTinSV">CÁ
+							NHÂN</a></li>
+					<li><a href="#">KẾT QUẢ</a></li>
+					<li><a href="#">PHẢN HỒI</a></li>
+
+				</ul>
 				</nav>
-	</div> <!-- menu -->
+				<ul class="nav navbar-nav navbar-right">
+
+
+					<li><p style="margin-top: 15px; color: white">
+							<span class="glyphicon glyphicon-user"></span> Sinh viên:
+
+						</p></li>
+					<!-- xuất thông tin người dung ở chỗ nay-->
+					<li><a href="<%=request.getContextPath() + "/login"%>"
+						action="#"> |Đăng xuất</a></li>
+				</ul>
+			</div>
+			</nav>
+		</div>
+		<!-- menu -->
 </div><!-- container -menu -->
 
 <div class="container">
-		<div class="row">
-			<div class="col-md-3">
-				<div class="well">
-					<div class="form-login" role="form" action="">
-						<h4 class="title title-centre" >DANH MỤC MENU</h4>
-						<div class="form-group" >
-							<i class="fa fa-paste" ></i><a class="group1">Điểm đánh giá quán trình<span class="fa arrow"></span></a>
-						</div>
-						<div class="form-group" style="background-color:#99FFFF">
-							<i class=" fa fa-bell-o"></i><a class="group1">Xem điểm bảo vệ<span class="fa arrow"></span></a>
-						</div>
-						<div class="form-group">
-							<i class="fa fa-pencil-square-o"></i><a class="group1">Nộp báo cáo<span class="fa arrow"></span></a>
-						</div>
-					</div>
-				</div>
-			</div>
 			<div class="col-md-9">
 				<div class="well">
 					<div class="content-centre">
